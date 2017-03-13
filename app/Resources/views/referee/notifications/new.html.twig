@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <h1>Nová notifikace</h1>
+    <form class="form" method="post">
+        <div class="form-group">
+            <label for="title">Nadpis</label>
+            <input type="text" class="form-control" id="title" name="title">
+        </div>
+        <div class="form-group">
+            <label for="text">Text</label>
+            <textarea class="form-control" id="text" name="text"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="form-control" value="Odeslat">
+        </div>
+    </form>
+{% endblock %}

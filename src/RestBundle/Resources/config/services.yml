@@ -1,0 +1,5 @@
+services:
+  rest.exception_listener:
+          class: RestBundle\Listener\ExceptionListener
+          tags:
+              - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }

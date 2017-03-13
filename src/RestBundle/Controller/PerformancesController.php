@@ -1,0 +1,196 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Martin Forejt, forejt.martin97@gmail.com
+ * Date: 30.12.2016
+ * Time: 12:06
+ */
+
+namespace RestBundle\Controller;
+
+use AppBundle\Entity\Performance;
+use AppBundle\Entity\Sport;
+use AppBundle\Entity\Team;
+use Doctrine\ORM\EntityManager;
+use RestBundle\Model\Exception\BadRequestException;
+use RestBundle\Model\Exception\NotFoundException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Request;
+
+/**
+ * Class PerformancesController
+ * @package RestBundle\Controller
+ */
+class PerformancesController extends RestController
+{
+    private static $columns = array(
+        'team',
+        'sport',
+        'points'
+    );
+
+    /**
+     * @Route("/performances/{id}", defaults={"id": null}, requirements={"id": "\d+"})
+     * @Method("GET")
+     * @param null $id
+     * @return \RestBundle\Model\RestResponse
+     * @throws \RestBundle\Model\Exception\OutOfDateException
+     * @throws NotFoundException
+     */
+    protected function getPerformances($id = null)
+    {
+        if ($id != null) {
+            $performance = $this->getDoctrine()->getRepository('AppBundle:Performance')->find($id);
+            if (!$performance instanceof Performance) throw new NotFoundException;
+
+            return $this->createResponse(array('performance' => $performance));
+        } else {
+            $performances = $this->getRepositoryWithCriteria('AppBundle:Performance');
+
+            return $this->createResponse(array('performances' => $performances));
+        }
+    }
+
+    /**
+     * @Route("/performances")
+     * @Method("POST")
+     * @param Request $request
+     * @return \RestBundle\Model\RestResponse
+     * @throws BadRequestException
+     * @throws \RestBundle\Model\Exception\OutOfDateException
+     */
+    protected function createPerformance(Request $request)
+    {
+        if (!$this->isDataValid($request->request->all()))
+            throw new BadRequestException;
+
+        $em = $this->getDoctrine()->getManager();
+        $performance = $this->newPerformance($request->request->all(), $em);
+
+        if (!$performance instanceof Performance)
+            throw new BadRequestException;
+
+        $em->persist($performance);
+        $em->flush();
+
+        return $this->createResponse();
+    }
+
+    /**
+     * @Route("/performances/{id}", defaults={"id": null}, requirements={"id": "\d+"})
+     * @Method("PUT")
+     * @param null $id
+     * @param Request $request
+     * @return \RestBundle\Model\RestResponse
+     * @throws \RestBundle\Model\Exception\OutOfDateException
+     * @throws NotFoundException
+     */
+    protected function updatePerformances($id = null, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $performances = array();
+
+        if ($id != null) {
+            $performance = $em->getRepository('AppBundle:Performance')->find($id);
+            if (!$performance instanceof Performance) throw new NotFoundException;
+            $performances[] = $performance;
+        } else {
+            $performances = $this->getRepositoryWithCriteria('AppBundle:Performance');
+        }
+
+        $data = $request->request->all();
+
+        /* @var $performance Performance */
+        foreach ($performances as $performance) {
+            $this->updatePerformance($performance, $data);
+        }
+
+        $em->flush();
+
+        return $this->createResponse();
+    }
+
+    /**
+     * @Route("/performances/{id}", defaults={"id": null}, requirements={"id": "\d+"})
+     * @Method("DELETE")
+     * @param null $id
+     * @return \RestBundle\Model\RestResponse
+     * @throws \RestBundle\Model\Exception\OutOfDateException
+     * @throws NotFoundException
+     */
+    protected function deletePerformance($id = null)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $performances = array();
+
+        if($id != null) {
+            $performance = $em->getRepository('AppBundle:Performance')->find($id);
+            if(!$performance instanceof Performance) throw new NotFoundException;
+            $performances[] = $performance;
+        } else {
+            $performances = $this->getRepositoryWithCriteria('AppBundle:Performance');
+        }
+
+        foreach($performances as $performance) {
+            $em->remove($performance);
+        }
+
+        $em->flush();
+
+        return $this->createResponse();
+    }
+
+    /**
+     * @param array $data
+     * @param $em EntityManager
+     * @return Performance
+     */
+    private function newPerformance($data = array(), EntityManager $em = null)
+    {
+        if ($em == null)
+            $em = $this->getDoctrine()->getManager();
+
+        $performance = new Performance();
+
+        $team = $em->getRepository('AppBundle:Team')->find($data['team']);
+        $sport = $em->getRepository('AppBundle:Sport')->find($data['sport']);
+
+        if (!$team instanceof Team || !$sport instanceof Sport)
+            return null;
+
+        $performance->setTeam($team);
+        $performance->setSport($sport);
+        $performance->setPoints($data['points']);
+
+        $performance->setTournament($this->getActiveTournament());
+        $performance->setReferee($this->getUser());
+        $performance->setDate(new \DateTime());
+
+        return $performance;
+    }
+
+    /**
+     * @param Performance $performance
+     * @param array $data
+     */
+    private function updatePerformance(Performance $performance, $data = array())
+    {
+        if(isset($data['points'])) $performance->setPoints($data['points']);
+        $performance->setReferee($this->getUser());
+        $performance->setDate(new \DateTime());
+    }
+
+    /**
+     * @param array $data
+     * @return bool
+     */
+    private static function isDataValid($data = array())
+    {
+        foreach (self::$columns as $column) {
+            if (!isset($data[$column])) return false;
+        }
+
+        return true;
+    }
+}

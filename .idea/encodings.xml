@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/Resources/views/admin/notifications/all.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Resources/views/admin/referees/detail.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Resources/views/admin/referees/new.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Resources/views/admin/referees/referees.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Resources/views/admin/tournaments/new.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Resources/views/admin/tournaments/tournaments.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Resources/views/base.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Resources/views/index.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Resources/views/referee/notifications/detail.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Resources/views/referee/notifications/new.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Resources/views/referee/notifications/received.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Resources/views/referee/notifications/sent.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Resources/views/referee/rules/detail.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Resources/views/referee/rules/rules.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Resources/views/security/login.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/Resources/views/security/settings.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/AppBundle/Controller/Admin/RefereesController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/AppBundle/Controller/Admin/TournamentsController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/AppBundle/Controller/Referee/NotificationsController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/AppBundle/Controller/Referee/RulesController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/AppBundle/Controller/SettingsController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/AppBundle/Form/SportType.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/AppBundle/Form/TeamType.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/AppBundle/Form/TournamentType.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/AppBundle/Form/UserType.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/AppBundle/Model/DateUtils.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/AppBundle/Model/Results/ResultsManager.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/RestBundle/Controller/MatchesController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/RestBundle/Controller/RestController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/RestBundle/Controller/TeamsController.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/RestBundle/Model/RestResponse.php" charset="UTF-8" />
+  </component>
+</project>

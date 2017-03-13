@@ -1,0 +1,80 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Martin Forejt, forejt.martin97@gmail.com
+ * Date: 15.12.2016
+ * Time: 18:36
+ */
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class Scoring
+ * @package AppBundle\Entity
+ * @ORM\Entity
+ * @ORM\Table(name="scoring")
+ */
+class Scoring
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer", name="tournament")
+     */
+    private $tournament_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Tournament")
+     * @ORM\JoinColumn(name="tournament_id", referencedColumnName="id")
+     */
+    private $tournament;
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer", name="sport")
+     */
+    private $sport_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Sport")
+     * @ORM\JoinColumn(name="sport_id", referencedColumnName="id")
+     */
+    private $sport;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $win;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $lose;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $draw;
+
+    /**
+     * @ORM\Column(type="integer", name="type")
+     */
+    private $type_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ScoringType")
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+     */
+    private $type;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $forfeit;
+
+    /**
+     * @ORM\Column(type="time")
+     */
+    private $time;
+}

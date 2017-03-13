@@ -1,0 +1,64 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Martin Forejt, forejt.martin97@gmail.com
+ * Date: 15.12.2016
+ * Time: 18:36
+ */
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class Notification
+ * @package AppBundle\Entity
+ * @ORM\Entity
+ * @ORM\Table(name="notification")
+ */
+class Notification
+{
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $title;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $text;
+
+    /**
+     * @ORM\Column(type="integer", name="addressee")
+     */
+    private $addressee_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Addressee")
+     * @ORM\JoinColumn(name="addressee_id", referencedColumnName="id")
+     */
+    private $addressee;
+
+    /**
+     * @ORM\Column(type="integer", name="sender")
+     */
+    private $sender_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="sender_id", referencedColumnName="id")
+     */
+    private $sender;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date;
+}

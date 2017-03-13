@@ -1,0 +1,81 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Martin Forejt, forejt.martin97@gmail.com
+ * Date: 15.12.2016
+ * Time: 18:36
+ */
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class Performance
+ * @package AppBundle\Entity
+ * @ORM\Entity
+ * @ORM\Table(name="performance")
+ */
+class Performance
+{
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="integer", name="team")
+     */
+    private $team_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Team")
+     * @ORM\JoinColumn(name="team_id", referencedColumnName="id")
+     */
+    private $team;
+
+    /**
+     * @ORM\Column(type="integer", name="sport")
+     */
+    private $sport_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Sport")
+     * @ORM\JoinColumn(name="sport_id", referencedColumnName="id")
+     */
+    private $sport;
+
+    /**
+     * @ORM\Column(type="integer", name="tournament")
+     */
+    private $tournament_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Tournament")
+     * @ORM\JoinColumn(name="tournament_id", referencedColumnName="id")
+     */
+    private $tournament;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $points;
+
+    /**
+     * @ORM\Column(type="integer", name="referee")
+     */
+    private $referee_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="referee_id", referencedColumnName="id")
+     */
+    private $referee;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date;
+}

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block wrapper %}
+    <div id="login_wrapper">
+        <header>
+            <h1>Sportovní den</h1>
+            <h2>SPŠ a VOŠ Písek</h2>
+        </header>
+        <div id="login_box">
+            {% if error %}
+                <div id="err_msg">Špatné přihlašovací jméno nebo heslo.</div>
+            {% endif %}
+            <form action="{{ path('login') }}" method="post">
+                <div class="form-group">
+                    <label for="username">Jméno:</label>
+                    <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Heslo:</label>
+                    <input class="form-control" type="password" id="password" name="_password" />
+                </div>
+
+                <button class="form-control" type="submit">Přihlásist</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

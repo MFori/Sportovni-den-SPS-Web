@@ -1,0 +1,56 @@
+// NEW
+
+#new-tournament-wr {
+
+  #new-tournament-teams {
+    margin: 9px 0;
+    height: 200px;
+    overflow-y: scroll;
+    padding: 5px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0px 0px 40px -20px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 0px 0px 40px -20px rgba(0,0,0,0.75);
+    box-shadow: inset 0px 0px 40px -20px rgba(0,0,0,0.75);
+  }
+
+  #sports-box {
+    .sports-item-box {
+      margin: 20px 0px;
+      padding: 5px;
+      border: 1px solid silver;
+      border-radius: 5px;
+
+      header {
+        position: relative;
+        div.checkbox {
+          display: inline-block;
+          margin: 0;
+        }
+        .sport-title {
+          display: inline-block;
+          vertical-align: top;
+        }
+        .sport-tools {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 10px;
+          margin: auto;
+          a {
+            &:hover, &:focus {
+              text-decoration: none;
+            }
+          }
+
+        }
+      }
+
+      .sport-tools-box {
+        display: none;
+      }
+
+    }
+  }
+
+}

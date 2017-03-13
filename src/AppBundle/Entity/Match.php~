@@ -1,0 +1,533 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Martin Forejt, forejt.martin97@gmail.com
+ * Date: 15.12.2016
+ * Time: 18:36
+ */
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use RestBundle\Model\RestSerializable;
+
+/**
+ * Class Match
+ * @package AppBundle\Entity
+ * @ORM\Entity
+ * @ORM\Table(name="`match`")
+ */
+class Match implements RestSerializable
+{
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="integer", name="sport")
+     */
+    private $sport_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Sport")
+     * @ORM\JoinColumn(name="sport", referencedColumnName="id")
+     * @var Sport
+     */
+    private $sport;
+
+    /**
+     * @ORM\Column(type="integer", name="tournament")
+     */
+    private $tournament_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Tournament")
+     * @ORM\JoinColumn(name="tournament", referencedColumnName="id")
+     */
+    private $tournament;
+
+    /**
+     * @ORM\Column(type="integer", name="team_1")
+     */
+    private $team1_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Team")
+     * @ORM\JoinColumn(name="team_1", referencedColumnName="id")
+     */
+    private $team1;
+
+    /**
+     * @ORM\Column(type="integer", name="team_2")
+     */
+    private $team2_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Team")
+     * @ORM\JoinColumn(name="team_2", referencedColumnName="id")
+     */
+    private $team2;
+
+    /**
+     * @ORM\Column(type="integer", name="score_1")
+     */
+    private $score1;
+
+    /**
+     * @ORM\Column(type="integer", name="score_2")
+     */
+    private $score2;
+
+    /**
+     * @ORM\Column(type="integer", name="`group`")
+     */
+    private $group;
+
+    /**
+     * @ORM\Column(type="boolean", name="core_group")
+     */
+    private $coreGroup;
+
+    /**
+     * @ORM\Column(type="integer", name="status")
+     */
+    private $status_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="MatchStatus")
+     * @ORM\JoinColumn(name="status", referencedColumnName="id")
+     */
+    private $status;
+
+    /**
+     * @ORM\Column(type="integer", name="referee")
+     */
+    private $referee_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="referee", referencedColumnName="id")
+     */
+    private $referee;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set sportId
+     *
+     * @param integer $sportId
+     *
+     * @return Match
+     */
+    public function setSportId($sportId)
+    {
+        $this->sport_id = $sportId;
+
+        return $this;
+    }
+
+    /**
+     * Get sportId
+     *
+     * @return integer
+     */
+    public function getSportId()
+    {
+        return $this->sport_id;
+    }
+
+    /**
+     * Set tournamentId
+     *
+     * @param integer $tournamentId
+     *
+     * @return Match
+     */
+    public function setTournamentId($tournamentId)
+    {
+        $this->tournament_id = $tournamentId;
+
+        return $this;
+    }
+
+    /**
+     * Get tournamentId
+     *
+     * @return integer
+     */
+    public function getTournamentId()
+    {
+        return $this->tournament_id;
+    }
+
+    /**
+     * Set team1Id
+     *
+     * @param integer $team1Id
+     *
+     * @return Match
+     */
+    public function setTeam1Id($team1Id)
+    {
+        $this->team1_id = $team1Id;
+
+        return $this;
+    }
+
+    /**
+     * Get team1Id
+     *
+     * @return integer
+     */
+    public function getTeam1Id()
+    {
+        return $this->team1_id;
+    }
+
+    /**
+     * Set team2Id
+     *
+     * @param integer $team2Id
+     *
+     * @return Match
+     */
+    public function setTeam2Id($team2Id)
+    {
+        $this->team2_id = $team2Id;
+
+        return $this;
+    }
+
+    /**
+     * Get team2Id
+     *
+     * @return integer
+     */
+    public function getTeam2Id()
+    {
+        return $this->team2_id;
+    }
+
+    /**
+     * Set score1
+     *
+     * @param integer $score1
+     *
+     * @return Match
+     */
+    public function setScore1($score1)
+    {
+        $this->score1 = $score1;
+
+        return $this;
+    }
+
+    /**
+     * Get score1
+     *
+     * @return integer
+     */
+    public function getScore1()
+    {
+        return $this->score1;
+    }
+
+    /**
+     * Set score2
+     *
+     * @param integer $score2
+     *
+     * @return Match
+     */
+    public function setScore2($score2)
+    {
+        $this->score2 = $score2;
+
+        return $this;
+    }
+
+    /**
+     * Get score2
+     *
+     * @return integer
+     */
+    public function getScore2()
+    {
+        return $this->score2;
+    }
+
+    /**
+     * Set group
+     *
+     * @param integer $group
+     * @return Match
+     */
+    public function setGroup($group)
+    {
+        $this->group = $group;
+
+        return $this;
+    }
+
+    /**
+     * Get group
+     *
+     * @return integer
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+
+    /**
+     * Set statusId
+     *
+     * @param integer $statusId
+     *
+     * @return Match
+     */
+    public function setStatusId($statusId)
+    {
+        $this->status_id = $statusId;
+
+        return $this;
+    }
+
+    /**
+     * Get statusId
+     *
+     * @return integer
+     */
+    public function getStatusId()
+    {
+        return $this->status_id;
+    }
+
+    /**
+     * Set refereeId
+     *
+     * @param integer $refereeId
+     *
+     * @return Match
+     */
+    public function setRefereeId($refereeId)
+    {
+        $this->referee_id = $refereeId;
+
+        return $this;
+    }
+
+    /**
+     * Get refereeId
+     *
+     * @return integer
+     */
+    public function getRefereeId()
+    {
+        return $this->referee_id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Match
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set sport
+     *
+     * @param \AppBundle\Entity\Sport $sport
+     *
+     * @return Match
+     */
+    public function setSport(\AppBundle\Entity\Sport $sport = null)
+    {
+        $this->sport = $sport;
+
+        return $this;
+    }
+
+    /**
+     * Get sport
+     *
+     * @return \AppBundle\Entity\Sport
+     */
+    public function getSport()
+    {
+        return $this->sport;
+    }
+
+    /**
+     * Set tournament
+     *
+     * @param \AppBundle\Entity\Tournament $tournament
+     *
+     * @return Match
+     */
+    public function setTournament(\AppBundle\Entity\Tournament $tournament = null)
+    {
+        $this->tournament = $tournament;
+
+        return $this;
+    }
+
+    /**
+     * Get tournament
+     *
+     * @return \AppBundle\Entity\Tournament
+     */
+    public function getTournament()
+    {
+        return $this->tournament;
+    }
+
+    /**
+     * Set team1
+     *
+     * @param \AppBundle\Entity\Team $team1
+     *
+     * @return Match
+     */
+    public function setTeam1(\AppBundle\Entity\Team $team1 = null)
+    {
+        $this->team1 = $team1;
+
+        return $this;
+    }
+
+    /**
+     * Get team1
+     *
+     * @return \AppBundle\Entity\Team
+     */
+    public function getTeam1()
+    {
+        return $this->team1;
+    }
+
+    /**
+     * Set team2
+     *
+     * @param \AppBundle\Entity\Team $team2
+     *
+     * @return Match
+     */
+    public function setTeam2(\AppBundle\Entity\Team $team2 = null)
+    {
+        $this->team2 = $team2;
+
+        return $this;
+    }
+
+    /**
+     * Get team2
+     *
+     * @return \AppBundle\Entity\Team
+     */
+    public function getTeam2()
+    {
+        return $this->team2;
+    }
+
+    /**
+     * Set status
+     *
+     * @param \AppBundle\Entity\MatchStatus $status
+     *
+     * @return Match
+     */
+    public function setStatus(\AppBundle\Entity\MatchStatus $status = null)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return \AppBundle\Entity\MatchStatus
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set referee
+     *
+     * @param \AppBundle\Entity\User $referee
+     *
+     * @return Match
+     */
+    public function setReferee(\AppBundle\Entity\User $referee = null)
+    {
+        $this->referee = $referee;
+
+        return $this;
+    }
+
+    /**
+     * Get referee
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getReferee()
+    {
+        return $this->referee;
+    }
+
+    /**
+     * Serialize object for rest api
+     * @return array of data for json serializing
+     */
+    public function restSerialize()
+    {
+        return array(
+            'id' => $this->id,
+            'sport' => $this->sport,
+            'team_1' => $this->team1,
+            'team_2' => $this->team2,
+            'score_1' => $this->score1,
+            'score_2' => $this->score2,
+            'group' => $this->group,
+            'date' => $this->date,
+            'status' => $this->status
+        );
+    }
+}

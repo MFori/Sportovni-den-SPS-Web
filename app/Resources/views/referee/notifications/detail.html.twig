@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <h1>{{ notification.title }}</h1>
+    <div>
+        <strong>Text: </strong>{{ notification.text }}
+    </div>
+    <div>
+        <strong>Datum: </strong>{{ notification.date|date('d.m.Y H:i:s') }}
+    </div>
+    <div>
+        <strong>Odesílate: </strong>{{ notification.sender.username }}
+    </div>
+    <div>
+        <strong>Adresát: </strong>{{ notification.addressee.name }}
+    </div>
+{% endblock %}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Sportovní den{% endblock %}</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <script type="application/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link type="text/css" href="{{ asset('Resources/css/main.css') }}" rel="stylesheet"/>
+        <script type="text/javascript" src="{{ asset('Resources/js/main.min.js') }}"></script>
+        {% block includes %}{% endblock %}
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        <div id="wrapper">
+            {% block wrapper %}
+
+                <header id="main_header">
+                    Sportovní den
+                </header>
+
+                <div id="navigation">
+                    <ul>
+                        <li>
+                            <a class="menu-item" href="{{ path('homepage') }}">Dashboard</a>
+                        </li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <li>
+                            <div class="menu-item">Turnaje<span class="glyphicon glyphicon-chevron-down"></span><span class="glyphicon glyphicon-chevron-up"></span></div>
+                            <div class="menu-drop">
+                                <a href="{{ path('tournaments') }}">Přehled</a>
+                                <a href="{{ path('tournaments_new') }}">Nový</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="menu-item">Rozhodčí<span class="glyphicon glyphicon-chevron-down"></span><span class="glyphicon glyphicon-chevron-up"></span></div>
+                            <div class="menu-drop">
+                                <a href="{{ path('referees') }}">Přehled</a>
+                                <a href="{{ path('referees_new') }}">Nový</a>
+                            </div>
+                        </li>
+                        {% endif %}
+                        <li>
+                            <a class="menu-item" href="{{ path('rules') }}">Pravidla</a>
+                        </li>
+                        <li>
+                            <div class="menu-item">Notifikace<span class="glyphicon glyphicon-chevron-down"></span><span class="glyphicon glyphicon-chevron-up"></span></div>
+                            <div class="menu-drop">
+                                {% if is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('notifications') }}">Přehled</a>
+                                {% endif %}
+                                <a href="{{ path('notifications_new') }}">Nová</a>
+                                <a href="{{ path('notifications_sent') }}">Odelsané</a>
+                                <a href="{{ path('notifications_received') }}">Přijaté</a>
+                            </div>
+                        </li>
+                        <li><a class="menu-item" href="{{ path('settings') }}">Nastavení</a></li>
+                        <li><a class="menu-item" href="{{ path('logout') }}">Odhlásit</a></li>
+                    </ul>
+                </div>
+
+                <div id="content">
+                    {% for label, flashes in app.session.flashbag.all %}
+                        {% for flash in flashes %}
+                            <div class="alert alert-{{ label }} alert-dismissible fade in">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                {{ flash }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% block content %}
+                    {% endblock %}
+                </div>
+
+                <footer id="main_footer">&copy; 2016 <a target="_blank" href="http://martinforejt.cz">Martin Forejt</a></footer>
+
+            {% endblock %}
+        </div>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

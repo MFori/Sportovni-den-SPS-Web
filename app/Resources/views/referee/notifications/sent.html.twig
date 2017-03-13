@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <h1>Odeslané notifikace</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nadpis</th>
+            <th>Text</th>
+            <th>Adresát</th>
+            <th>Datum</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for notification in notifications %}
+            <tr>
+                <td><a href="{{ path('notifications_detail', {'id': notification.id}) }}">{{ notification.title }}</a></td>
+                <td>{{ notification.text }}</td>
+                <td>{{ notification.addressee.name }}</td>
+                <td>{{ notification.date|date('d.m.Y H:i:s') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

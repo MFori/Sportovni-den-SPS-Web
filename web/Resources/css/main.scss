@@ -1,0 +1,124 @@
+html, body {
+  height: 100%;
+  min-width: 1000px;
+  margin: 0;
+  padding: 0;
+
+  a {
+    color: #333333;
+    &:hover, &:focus {
+      color: #333333;
+    }
+  }
+
+}
+
+$header_height: 60px;
+$navigation_width: 190px;
+$footer_height: 40px;
+
+#wrapper {
+  min-height: 100%!important;
+  height: auto;
+  position: relative;
+  width: 100%;
+
+  #main_header {
+    background: #243c96;
+    width: 100%;
+    height: $header_height;
+    position: relative;
+    color: #f8f8f8;
+    font-size: 29px;
+    padding: 8px 11px;
+    -webkit-box-shadow: 0px 4px 34px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 4px 34px -12px rgba(0,0,0,0.75);
+    box-shadow: 0px 4px 34px -12px rgba(0,0,0,0.75);
+  }
+
+  #navigation {
+    background: #f7f7f8;
+    width: $navigation_width;
+    position: absolute;
+    height: calc(100% - #{$header_height});
+    overflow-y: auto;
+    z-index: 2;
+    user-select: none;
+    border-right: 1px solid silver;
+    -webkit-box-shadow: 4px 0px 34px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 0px 34px -12px rgba(0,0,0,0.75);
+    box-shadow: 4px 0px 34px -12px rgba(0,0,0,0.75);
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+
+      .menu-item {
+        display: block;
+        width: 100%;
+        padding: 5px;
+        background: #e6e7e8;
+        position: relative;
+        cursor: pointer;
+        border-top: 1px solid silver;
+        &:hover {
+          text-decoration: underline;
+        }
+        span {
+          position: absolute;
+          top: 10px;
+          right: 5px;
+        }
+        .glyphicon-chevron-up {
+          display: none;
+        }
+      }
+
+      .menu-drop {
+        display: none;
+        a {
+          display: block;
+          padding: 3px 3px 3px 10px;
+        }
+      }
+
+    }
+
+  }
+
+  #content {
+    background: white;
+    box-sizing: border-box;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-left: calc(#{$navigation_width} + 20px);
+    padding-bottom: calc(#{$footer_height} + 20px);
+
+    h1 {
+      margin: 0 0 10px 0;
+    }
+  }
+
+  #main_footer {
+    background: #232321;
+    width: 100%;
+    height: $footer_height;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    text-align: right;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 38px;
+    padding-right: 12px;
+    color: white;
+    a {
+      color: white;
+    }
+  }
+
+}
+
+@import "login", "tournaments";

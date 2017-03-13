@@ -1,0 +1,6 @@
+rest_routing:
+    resource: "@RestBundle/Resources/config/routing.yml"
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

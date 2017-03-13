@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <h1>Rozhodčí</h1>
+
+    <a style="font-size: 20px;" href="{{ path('referees_new') }}">Nový</a><br>
+
+    <table class="table table-sort tablesorter">
+        <thead>
+        <tr>
+            <th>Jméno</th>
+            <th>Email</th>
+            <th class="text-center">Admin</th>
+            <th class="text-center">Zobrazení</th>
+            <th class="text-center">Úprava</th>
+            <th class="text-center">Odstranění</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for referee in referees %}
+            <tr>
+                <td>{{ referee.username }}</td>
+                <td>{{ referee.email }}</td>
+                <td class="text-center">
+                    {% if referee.isAdmin %} Ano {% else %} Ne {% endif %}
+                </td>
+                <td class="text-center"><a href="{{ path('referees_detail', {'id': referee.id}) }}">Zobrazit</a></td>
+                <td class="text-center"><a href="{{ path('referees_edit', {'id': referee.id}) }}">Upravit</a></td>
+                <td class="text-center"><a href="{{ path('referees_delete', {'id': referee.id}) }}">Odstranit</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block includes %}
+    <script src="{{ asset('Resources/js/util/jquery.tablesorter.min.js') }}"></script>
+    <script src="{{ asset('Resources/js/page/referees.min.js') }}"></script>
+{% endblock %}

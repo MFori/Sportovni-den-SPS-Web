@@ -1,0 +1,53 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Martin Forejt, forejt.martin97@gmail.com
+ * Date: 15.12.2016
+ * Time: 18:36
+ */
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class Rules
+ * @package AppBundle\Entity
+ * @ORM\Entity
+ * @ORM\Table(name="rules")
+ */
+class Rules
+{
+    /**
+     * @ORM\Column(type="integer", name="sport")
+     * @ORM\Id
+     */
+    private $sport_id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Sport", inversedBy="rules")
+     * @ORM\JoinColumn(name="sport_id", referencedColumnName="id")
+     */
+    private $sport;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $text;
+
+    /**
+     * @ORM\Column(type="datetime", name="edit_date")
+     */
+    private $editDate;
+
+    /**
+     * @ORM\Column(type="datetime", name="edit_user")
+     */
+    private $editUser_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="editUser_id", referencedColumnName="id")
+     */
+    private $editUser;
+}

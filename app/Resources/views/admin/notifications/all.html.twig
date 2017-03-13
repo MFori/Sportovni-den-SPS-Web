@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <div>
+        <h1>Notifikace</h1>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nadpis</th>
+                <th>Text</th>
+                <th>Odesílatel</th>
+                <th>Příjemce</th>
+                <th>Datum</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for notif in notifications %}
+                <tr>
+                    <td><a href="{{ path('notifications_detail', {'id': notif.id}) }}">{{ notif.title }}</a></td>
+                    <td>{{ notif.text }}</td>
+                    <td>{{ notif.sender.username }}</td>
+                    <td>{{ notif.addressee.name }}</td>
+                    <td>{{ notif.date|date('d.m.Y H:i:s') }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

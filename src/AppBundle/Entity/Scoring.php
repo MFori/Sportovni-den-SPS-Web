@@ -1,0 +1,386 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Martin Forejt, forejt.martin97@gmail.com
+ * Date: 15.12.2016
+ * Time: 18:36
+ */
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Class Scoring
+ * @package AppBundle\Entity
+ * @ORM\Entity
+ * @ORM\Table(name="scoring")
+ */
+class Scoring
+{
+    /**
+     * @ORM\Column(type="integer", name="tournament")
+     * @ORM\Id
+     */
+    private $tournament_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Tournament")
+     * @ORM\JoinColumn(name="tournament", referencedColumnName="id")
+     */
+    private $tournament;
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer", name="sport")
+     */
+    private $sport_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Sport")
+     * @ORM\JoinColumn(name="sport", referencedColumnName="id")
+     */
+    private $sport;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $win;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $lose;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $draw;
+
+    /**
+     * @ORM\Column(type="integer", name="type")
+     */
+    private $type_id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ScoringType")
+     * @ORM\JoinColumn(name="type", referencedColumnName="id")
+     */
+    private $type;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $forfeit;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $sets;
+
+    /**
+     * @ORM\Column(type="integer", name="set_points")
+     */
+    private $setPoints;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $time;
+
+    /**
+     * Set tournamentId
+     *
+     * @param integer $tournamentId
+     *
+     * @return Scoring
+     */
+    public function setTournamentId($tournamentId)
+    {
+        $this->tournament_id = $tournamentId;
+
+        return $this;
+    }
+
+    /**
+     * Get tournamentId
+     *
+     * @return integer
+     */
+    public function getTournamentId()
+    {
+        return $this->tournament_id;
+    }
+
+    /**
+     * Set sportId
+     *
+     * @param integer $sportId
+     *
+     * @return Scoring
+     */
+    public function setSportId($sportId)
+    {
+        $this->sport_id = $sportId;
+
+        return $this;
+    }
+
+    /**
+     * Get sportId
+     *
+     * @return integer
+     */
+    public function getSportId()
+    {
+        return $this->sport_id;
+    }
+
+    /**
+     * Set win
+     *
+     * @param integer $win
+     *
+     * @return Scoring
+     */
+    public function setWin($win)
+    {
+        $this->win = $win;
+
+        return $this;
+    }
+
+    /**
+     * Get win
+     *
+     * @return integer
+     */
+    public function getWin()
+    {
+        return $this->win;
+    }
+
+    /**
+     * Set lose
+     *
+     * @param integer $lose
+     *
+     * @return Scoring
+     */
+    public function setLose($lose)
+    {
+        $this->lose = $lose;
+
+        return $this;
+    }
+
+    /**
+     * Get lose
+     *
+     * @return integer
+     */
+    public function getLose()
+    {
+        return $this->lose;
+    }
+
+    /**
+     * Set draw
+     *
+     * @param integer $draw
+     *
+     * @return Scoring
+     */
+    public function setDraw($draw)
+    {
+        $this->draw = $draw;
+
+        return $this;
+    }
+
+    /**
+     * Get draw
+     *
+     * @return integer
+     */
+    public function getDraw()
+    {
+        return $this->draw;
+    }
+
+    /**
+     * Set typeId
+     *
+     * @param integer $typeId
+     *
+     * @return Scoring
+     */
+    public function setTypeId($typeId)
+    {
+        $this->type_id = $typeId;
+
+        return $this;
+    }
+
+    /**
+     * Get typeId
+     *
+     * @return integer
+     */
+    public function getTypeId()
+    {
+        return $this->type_id;
+    }
+
+    /**
+     * Set forfeit
+     *
+     * @param integer $forfeit
+     *
+     * @return Scoring
+     */
+    public function setForfeit($forfeit)
+    {
+        $this->forfeit = $forfeit;
+
+        return $this;
+    }
+
+    /**
+     * Get forfeit
+     *
+     * @return integer
+     */
+    public function getForfeit()
+    {
+        return $this->forfeit;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSets()
+    {
+        return $this->sets;
+    }
+
+    /**
+     * @param mixed $sets
+     */
+    public function setSets($sets)
+    {
+        $this->sets = $sets;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSetPoints()
+    {
+        return $this->setPoints;
+    }
+
+    /**
+     * @param mixed $setPoints
+     */
+    public function setSetPoints($setPoints)
+    {
+        $this->setPoints = $setPoints;
+    }
+
+    /**
+     * Set time
+     *
+     * @param \DateTime $time
+     *
+     * @return Scoring
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * Get time
+     *
+     * @return \DateTime
+     */
+    public function getTime()
+    {
+        return $this->time;
+    }
+
+    /**
+     * Set tournament
+     *
+     * @param \AppBundle\Entity\Tournament $tournament
+     *
+     * @return Scoring
+     */
+    public function setTournament(\AppBundle\Entity\Tournament $tournament = null)
+    {
+        $this->tournament = $tournament;
+
+        return $this;
+    }
+
+    /**
+     * Get tournament
+     *
+     * @return \AppBundle\Entity\Tournament
+     */
+    public function getTournament()
+    {
+        return $this->tournament;
+    }
+
+    /**
+     * Set sport
+     *
+     * @param \AppBundle\Entity\Sport $sport
+     *
+     * @return Scoring
+     */
+    public function setSport(\AppBundle\Entity\Sport $sport = null)
+    {
+        $this->sport = $sport;
+
+        return $this;
+    }
+
+    /**
+     * Get sport
+     *
+     * @return \AppBundle\Entity\Sport
+     */
+    public function getSport()
+    {
+        return $this->sport;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \AppBundle\Entity\ScoringType $type
+     *
+     * @return Scoring
+     */
+    public function setType(\AppBundle\Entity\ScoringType $type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \AppBundle\Entity\ScoringType
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+}

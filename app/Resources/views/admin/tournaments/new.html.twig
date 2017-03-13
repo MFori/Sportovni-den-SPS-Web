@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <div id="new-tournament-wr">
+        <h1>Turnaje</h1>
+
+        {{ form_start(form) }}
+
+        {{ form_label(form.title) }}
+        {{ form_widget(form.title) }}
+
+        <div id="new-tournament-teams">
+            {{ form_widget(form.teams) }}
+        </div>
+
+        <div id="sports-box">
+            {% for sport in form.sports %}
+                <div class="sports-item-box" data-id="{{ sports[loop.index0].id }}">
+                    <header>
+                        {{ form_widget(sport.active) }}
+                        {% if sport|length > 1 %}
+                            <div class="sport-tools">
+                                <a href="#" data-id="{{ sports[loop.index0].id }}">
+                                    <span class="glyphicon glyphicon-chevron-down"></span>
+                                    <span style="display:none;" class="glyphicon glyphicon-chevron-up"></span>
+                                </a>
+                            </div>
+                        {% endif %}
+                    </header>
+                    <div class="sport-tools-box">
+                        {% for row in sport %}
+                            <div>
+                                {{ form_label(row) }}
+                                {{ form_widget(row) }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        {{ form_end(form) }}
+
+    </div>
+{% endblock %}
+
+{% block includes %}
+    <script src="{{ asset('Resources/js/page/tournaments.min.js') }}"></script>
+{% endblock %}

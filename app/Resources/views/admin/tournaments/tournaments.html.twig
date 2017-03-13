@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <h1>Turnaje</h1>
+
+    <table class="table table-sort tablesorter">
+        <thead>
+        <tr>
+            <th>Název</th>
+            <th>Vytvořeno</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tournament in tournaments %}
+            <tr>
+                <td>{{ tournament.title }}</td>
+                <td>{{ tournament.created|date('d. m. Y') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

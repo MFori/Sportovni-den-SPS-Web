@@ -1,0 +1,67 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Martin Forejt, forejt.martin97@gmail.com
+ * Date: 17.12.2016
+ * Time: 13:32
+ */
+
+namespace AppBundle\Controller;
+
+use AppBundle\Entity\User;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+
+class SettingsController extends Controller
+{
+    /**
+     * @Route("/nastaveni", name="settings")
+     * @param $request Request
+     * @return Response
+     */
+    public function settingsAction(Request $request)
+    {
+        /* @var $user User */
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        $form = $this->createFormBuilder($user)
+            ->add('username', TextType::class, array('label' => 'Jméno'))
+            ->add('plain_password', RepeatedType::class, array(
+                'type' => PasswordType::class, 'required' => false,
+                'invalid_message' => 'Hesla musí souhlasit.',
+                'first_options' => array('label' => 'Heslo'),
+                'second_options' => array('label' => 'Heslo znovu')
+            ))
+            ->add('save', SubmitType::class, array('label' => 'Uložit'))
+            ->getForm();
+
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            /* @var $u User */
+            $user = $form->getData();
+
+            if($user->getPlainPassword() != '') {
+                $encoder = $this->get('security.password_encoder');
+                $user->setPassword($encoder->encodePassword($user, $user->getPlainPassword()));
+            }
+
+            $user->setUsername($user->getUsername());
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            $this->addFlash('success', 'Údaje uloženy.');
+
+            return $this->redirectToRoute('settings');
+        }
+
+        return $this->render('security/settings.html.twig', array('form' => $form->createView()));
+    }
+}

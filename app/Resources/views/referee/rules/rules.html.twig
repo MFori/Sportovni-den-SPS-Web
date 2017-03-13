@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <h1>Pravidla</h1>
+    <ul>
+        {% for rule in rules %}
+            <li>
+                <a style="font-size: 20px"
+                   href="{{ path('sport_rules', {'sport': rule.sport.id}) }}">{{ rule.sport.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

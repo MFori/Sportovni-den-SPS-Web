@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <h1>Nastavení</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.username) }}
+
+    <div>
+        {{ form_widget(form.plain_password) }}
+        <p style="font-style:italic;">(Heslo vyplňte pouze pokud ho chcete změnit.)</p>
+        <br>
+    </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -1,0 +1,52 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        db_provider:
+            entity:
+                class: AppBundle:User
+                property: username
+
+    encoders:
+            Symfony\Component\Security\Core\User\User: plaintext
+            AppBundle\Entity\User:
+                algorithm: sha512
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            pattern: ^/
+            anonymous: ~
+            provider: db_provider
+
+            form_login:
+                login_path: login
+                check_path: login
+
+            logout:
+                invalidate_session: true
+                path: /odhlaseni
+                target: /
+
+    access_control:
+      # Anonym
+        - { path: ^/prihlaseni, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/v1, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+
+      # Admin
+        - { path: ^/turnaje, roles: ROLE_ADMIN }
+        - { path: ^/rozhodci, roles: ROLE_ADMIN }
+        - { path: ^/rozhodci, roles: ROLE_ADMIN }
+        - { path: ^/notifikace$, roles: ROLE_ADMIN }
+
+      # Referee
+        - { path: ^/, roles: ROLE_USER }
+        - { path: ^/notifikace, roles: ROLE_USER }
+        - { path: ^/pravidla, roles: ROLE_USER }
+        - { path: ^/nastaveni, roles: ROLE_USER }

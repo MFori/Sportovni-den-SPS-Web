@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <p style="font-size: 18px">Vítejte ve webové aplikaci pro správu sportovního dne na SPŠ a VOŠ Písek.</p>
+
+    <p>Aktuální turnaj: {{ tournament.title }}</p>
+    <p>Počet týmů: {{ teams_size }}</p>
+
+{% endblock %}

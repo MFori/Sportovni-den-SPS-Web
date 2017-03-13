@@ -1,0 +1,104 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Martin Forejt, forejt.martin97@gmail.com
+ * Date: 30.12.2016
+ * Time: 12:06
+ */
+
+namespace RestBundle\Controller;
+
+use AppBundle\Entity\Addressee;
+use AppBundle\Entity\Notification;
+use AppBundle\Model\NotificationsManager;
+use Doctrine\DBAL\Exception\NotNullConstraintViolationException;
+use RestBundle\Model\Exception\BadRequestException;
+use RestBundle\Model\Exception\NotFoundException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\HttpFoundation\Request;
+
+/**
+ * Class NotificationsController
+ * @package RestBundle\Controller
+ */
+class NotificationsController extends RestController
+{
+    /**
+     * @Route("/notifications")
+     * @Method("POST")
+     * @param Request $request
+     * @return \RestBundle\Model\RestResponse
+     * @throws BadRequestException
+     */
+    protected function sendNotificationAction(Request $request)
+    {
+        $addressees = $request->request->get('addressees');
+        $text = $request->request->get('text');
+        $title = $request->request->get('title');
+
+        if (!is_array($addressees)) {
+            $addressees = array($addressees);
+        }
+        $em = $this->getDoctrine()->getManager();
+
+        $addressees = $em->getRepository('AppBundle:Addressee')->findById($addressees);
+        /* @var $addressee Addressee */
+        foreach ($addressees as $addressee) {
+            $notification = new Notification();
+            $notification->setDate(new \DateTime());
+            $notification->setText($text);
+            $notification->setTitle($title);
+            $notification->setAddressee($addressee);
+            $notification->setSender($this->getUser());
+
+            try {
+                $em->persist($notification);
+                $em->flush();
+            } catch (NotNullConstraintViolationException $e) {
+                throw new BadRequestException;
+            }
+
+            if (NotificationsManager::send($notification)) continue;
+            else {
+                $em->remove($notification);
+                throw new BadRequestException;
+            }
+        }
+
+        return $this->createResponse(array('notification' => $notification));
+    }
+
+    /**
+     * @Route("/addressees")
+     * @Method("GET")
+     * @return \RestBundle\Model\RestResponse
+     * @throws \RestBundle\Model\Exception\BadRequestException
+     * @throws \RestBundle\Model\Exception\OutOfDateException
+     */
+    protected function getAddresseesAction()
+    {
+        $addressees = $this->getRepositoryWithCriteria('AppBundle:Addressee');
+
+        return $this->createResponse(array('addressees' => $addressees));
+    }
+
+    /**
+     * @Route("/notifications/{id}", defaults={"id": null}, requirements={"id": "\d+"})
+     * @Method("GET")
+     * @param null $id
+     * @return \RestBundle\Model\RestResponse
+     * @throws NotFoundException
+     */
+    public function notificationsAction($id = null)
+    {
+        if ($id != null) {
+            $notification = $this->getDoctrine()->getRepository('AppBundle:Notification')->find($id);
+            if(!$notification instanceof Notification) throw new NotFoundException;
+            return $this->createResponse(array('notification' => $notification));
+        } else {
+            $notifications = $this->getRepositoryWithCriteria('AppBundle:Notification');
+            return $this->createResponse(array('notifications' => $notifications));
+        }
+    }
+}
