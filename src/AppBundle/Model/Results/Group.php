@@ -13,29 +13,42 @@ use AppBundle\Entity\Team;
 use AppBundle\Model\SimpleGroup;
 use RestBundle\Model\RestSerializable;
 
+/**
+ * Class Group
+ * @package AppBundle\Model\Results
+ */
 class Group extends SimpleGroup implements RestSerializable
 {
     /**
+     * Teams
      * @var Team[]
      */
     private $teams = array();
 
     /**
+     * Table
      * @var Table
      */
     private $table;
 
     /**
+     * Matches
      * @var Match[]
      */
     private $matches = array();
 
+    /**
+     * Default construct
+     * @param string $group
+     */
     public function __construct($group = '')
     {
         $this->group = $group;
     }
 
     /**
+     * Get teams
+     *
      * @return \AppBundle\Entity\Team[]
      */
     public function getTeams()
@@ -44,6 +57,8 @@ class Group extends SimpleGroup implements RestSerializable
     }
 
     /**
+     * Set teams
+     *
      * @param \AppBundle\Entity\Team[] $teams
      */
     public function setTeams($teams)
@@ -56,6 +71,8 @@ class Group extends SimpleGroup implements RestSerializable
     }
 
     /**
+     * Add team
+     *
      * @param Team $team
      */
     public function addTeam($team)
@@ -68,6 +85,8 @@ class Group extends SimpleGroup implements RestSerializable
     }
 
     /**
+     * Get table
+     *
      * @return Table
      */
     public function getTable()
@@ -76,6 +95,8 @@ class Group extends SimpleGroup implements RestSerializable
     }
 
     /**
+     * Set table
+     *
      * @param Table $table
      */
     public function setTable($table)
@@ -84,6 +105,8 @@ class Group extends SimpleGroup implements RestSerializable
     }
 
     /**
+     * Get matches
+     *
      * @return \AppBundle\Entity\Match[]
      */
     public function getMatches()
@@ -92,6 +115,8 @@ class Group extends SimpleGroup implements RestSerializable
     }
 
     /**
+     * Set matches
+     *
      * @param \AppBundle\Entity\Match[] $matches
      */
     public function setMatches($matches)
@@ -100,6 +125,8 @@ class Group extends SimpleGroup implements RestSerializable
     }
 
     /**
+     * Add match
+     *
      * @param Match $match
      */
     public function addMatch(Match $match)
@@ -107,11 +134,19 @@ class Group extends SimpleGroup implements RestSerializable
         $this->matches[] = $match;
     }
 
+    /**
+     * Get Teams count to matches
+     * @return float
+     */
     public function getTeamsCountToMatches()
     {
         return (1 + sqrt(1 - 4 * 2 * (-sizeof($this->matches)))) / 2;
     }
 
+    /**
+     * Is group complete
+     * @return bool
+     */
     public function isComplete()
     {
         foreach ($this->matches as $match) {

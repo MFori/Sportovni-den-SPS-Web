@@ -8,12 +8,15 @@
 
 namespace AppBundle\Model;
 
+/**
+ * Class GroupGenerator
+ * @package AppBundle\Model
+ */
 class GroupGenerator extends FinaleGenerator
 {
     /**
-     * @override
      * Create finale matches
-     *
+     * @override
      * @return array
      */
     protected function createFinale()

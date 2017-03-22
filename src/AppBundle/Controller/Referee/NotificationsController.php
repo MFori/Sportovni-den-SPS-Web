@@ -16,9 +16,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class NotificationsController
+ * @package AppBundle\Controller\Referee
+ */
 class NotificationsController extends Controller
 {
     /**
+     * Route for sending notifications from web
      * @Route("/notifikace/nova", name="notifications_new")
      * @param $request Request
      * @return Response
@@ -53,6 +58,7 @@ class NotificationsController extends Controller
     }
 
     /**
+     * Route for list of send notifications
      * @Route("/notifikace/odeslane", name="notifications_sent")
      * @return Response
      */
@@ -71,6 +77,7 @@ class NotificationsController extends Controller
     }
 
     /**
+     * Route for list of received notifications
      * @Route("/notifikace/prijate", name="notifications_received")
      * @return Response
      */
@@ -97,6 +104,7 @@ class NotificationsController extends Controller
     }
 
     /**
+     * Route for detail of notification
      * @Route("/notifikace/detail/{id}", name="notifications_detail")
      * @param $id
      * @return Response

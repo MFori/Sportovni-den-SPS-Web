@@ -24,6 +24,10 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class PerformancesController extends RestController
 {
+    /**
+     * Columns for data
+     * @var array
+     */
     private static $columns = array(
         'team',
         'sport',
@@ -31,6 +35,7 @@ class PerformancesController extends RestController
     );
 
     /**
+     * Route for Rest request of getting performance(s)
      * @Route("/performances/{id}", defaults={"id": null}, requirements={"id": "\d+"})
      * @Method("GET")
      * @param null $id
@@ -53,6 +58,7 @@ class PerformancesController extends RestController
     }
 
     /**
+     * Route for Rest request for creating new performance
      * @Route("/performances")
      * @Method("POST")
      * @param Request $request
@@ -78,6 +84,7 @@ class PerformancesController extends RestController
     }
 
     /**
+     * Route of Rest for updating performance(s)
      * @Route("/performances/{id}", defaults={"id": null}, requirements={"id": "\d+"})
      * @Method("PUT")
      * @param null $id
@@ -112,6 +119,7 @@ class PerformancesController extends RestController
     }
 
     /**
+     * Route of Rest for deleting performance(s)
      * @Route("/performances/{id}", defaults={"id": null}, requirements={"id": "\d+"})
      * @Method("DELETE")
      * @param null $id
@@ -142,6 +150,7 @@ class PerformancesController extends RestController
     }
 
     /**
+     * Create new performance
      * @param array $data
      * @param $em EntityManager
      * @return Performance
@@ -171,6 +180,7 @@ class PerformancesController extends RestController
     }
 
     /**
+     * Update performance
      * @param Performance $performance
      * @param array $data
      */
@@ -182,6 +192,7 @@ class PerformancesController extends RestController
     }
 
     /**
+     * Check if send data is valid
      * @param array $data
      * @return bool
      */

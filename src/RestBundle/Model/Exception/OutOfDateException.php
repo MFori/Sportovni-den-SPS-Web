@@ -17,16 +17,28 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class OutOfDateException extends RestException
 {
+    /**
+     * Get http code of response
+     * @return int
+     */
     protected function getHttpStatusCode()
     {
         return Response::HTTP_BAD_REQUEST;
     }
 
+    /**
+     * Get data about exception
+     * @return array
+     */
     protected function getExceptionData()
     {
         return array();
     }
 
+    /**
+     * Get array of errors to add to Rest response
+     * @return array
+     */
     protected function getErrors()
     {
         return array(

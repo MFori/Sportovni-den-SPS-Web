@@ -15,49 +15,70 @@ use AppBundle\Entity\Team;
 use AppBundle\Entity\Tournament;
 use AppBundle\Form\Tournament as Data;
 
+/**
+ * Class TournamentBuilder
+ * @package AppBundle\Model
+ */
 class TournamentBuilder
 {
     /**
+     * Data
      * @var Tournament
      */
     private $data;
     /**
+     * Tournament
      * @var \AppBundle\Entity\Tournament
      */
     private $tournament;
     /**
+     * Teams
      * @var array
      */
     private $teams;
     /**
+     * Sporst
      * @var array
      */
     private $sports;
     /**
+     * sportEntities
      * @var array
      */
     private $sportEntities;
     /**
+     * Scoring
      * @var array
      */
     private $scoring;
     /**
+     * Matches
      * @var array
      */
     private $matches = array();
     /**
+     * Performances
      * @var array
      */
     private $performances;
     /**
+     * ScoringTypes
      * @var array
      */
     private $scoringTypes;
     /**
+     * Matches status
      * @var MatchStatus
      */
     private $matchStatus;
 
+    /**
+     * Defautl construct
+     * @param Data $formData
+     * @param Tournament $tournament
+     * @param $sports
+     * @param $statuses
+     */
     public function __construct(Data $formData, Tournament $tournament, $sports, $statuses)
     {
         $this->data = $formData;
@@ -80,6 +101,7 @@ class TournamentBuilder
     }
 
     /**
+     * Create tournament
      * @return bool
      */
     public function create()
@@ -93,7 +115,7 @@ class TournamentBuilder
     }
 
     /**
-     *
+     * Update teams
      */
     private function updateTeams()
     {
@@ -101,7 +123,7 @@ class TournamentBuilder
     }
 
     /**
-     *
+     * Mine sports
      */
     private function mineSports()
     {
@@ -123,7 +145,7 @@ class TournamentBuilder
     }
 
     /**
-     *
+     * Create matches
      */
     private function createMatches()
     {
@@ -148,7 +170,7 @@ class TournamentBuilder
     }
 
     /**
-     *
+     * create scoring
      */
     private function createScoring()
     {
@@ -166,6 +188,8 @@ class TournamentBuilder
     }
 
     /**
+     * Get sports
+     *
      * @return mixed
      */
     public function getSports()
@@ -174,6 +198,8 @@ class TournamentBuilder
     }
 
     /**
+     * Get tournament
+     *
      * @return \AppBundle\Entity\Tournament
      */
     public function getTournament()
@@ -182,6 +208,8 @@ class TournamentBuilder
     }
 
     /**
+     * Get teams
+     *
      * @return array
      */
     public function getTeams()
@@ -190,6 +218,8 @@ class TournamentBuilder
     }
 
     /**
+     * Get scoring
+     *
      * @return array
      */
     public function getScoring()
@@ -198,6 +228,8 @@ class TournamentBuilder
     }
 
     /**
+     * Get matches
+     *
      * @return array
      */
     public function getMatches()
@@ -206,6 +238,8 @@ class TournamentBuilder
     }
 
     /**
+     * Get performances
+     *
      * @return array
      */
     public function getPerformances()
@@ -214,6 +248,8 @@ class TournamentBuilder
     }
 
     /**
+     * Get scoring types
+     *
      * @param array $scoringTypes
      */
     public function setScoringTypes($scoringTypes)

@@ -14,31 +14,42 @@ use AppBundle\Entity\Sport;
 use AppBundle\Entity\Team;
 use AppBundle\Entity\Tournament;
 
+/**
+ * Class MatchesGenerator
+ * @package AppBundle\Model
+ */
 abstract class MatchesGenerator
 {
     /**
+     * Tournament
      * @var Tournament
      */
     protected $tournament;
     /**
+     * Sport
      * @var Sport
      */
     protected $sport;
     /**
+     * Teams
      * @var array
      */
     protected $teams = array();
     /**
+     * Match status
      * @var MatchStatus
      */
     protected $defaultStatus;
 
-    // hide public constructor
+    /**
+     * Private constructor
+     */
     private function __construct()
     {
     }
 
     /**
+     * Static method for creating new generator
      * @param $systemType
      * @return FinaleGenerator|GroupGenerator|RobinGenerator|null
      */
@@ -64,6 +75,7 @@ abstract class MatchesGenerator
     public abstract function generate();
 
     /**
+     * Create robin matches
      * @param $teams
      * @param array $params
      * @return array

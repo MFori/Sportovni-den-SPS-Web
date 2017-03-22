@@ -18,9 +18,14 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
+/**
+ * Class SettingsController
+ * @package AppBundle\Controller
+ */
 class SettingsController extends Controller
 {
     /**
+     * Route for user account setting
      * @Route("/nastaveni", name="settings")
      * @param $request Request
      * @return Response

@@ -1,0 +1,158 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Martin Forejt, forejt.martin97@gmail.com
+ * Date: 17.12.2016
+ * Time: 13:30
+ */
+
+namespace AppBundle\Controller\Admin;
+
+use AppBundle\Form\Tournament;
+use AppBundle\Model\TournamentBuilder;
+use Doctrine\ORM\EntityManager;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use AppBundle\Form\TournamentType;
+
+/**
+ * Class TournamentsController
+ * @package AppBundle\Controller\Admin
+ */
+class TournamentsController extends Controller
+{
+    /**
+     * Route for summary of tournaments (list)
+     * @Route("/turnaje", name="tournaments")
+     * @return Response
+     */
+    public function summaryAction()
+    {
+        $tournaments = $this->getDoctrine()->getRepository('AppBundle:Tournament')->findAll();
+
+        return $this->render('admin/tournaments/tournaments.html.twig', array('tournaments' => $tournaments));
+    }
+
+    /**
+     * Route for creating new tournament
+     * @Route("/turnaje/novy", name="tournaments_new")
+     * @param $request Request
+     * @return Response
+     */
+    public function newAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $tournament = new Tournament();
+        $sports = $em->getRepository('AppBundle:Sport')->findAll();
+        $tournament->setSports($sports);
+        $teams = $em->getRepository('AppBundle:Team')->findAll();
+        $tournament->setTeams($teams);
+
+        $scoring_types = $em->getRepository('AppBundle:ScoringType')->findAll();
+        $options = array('scoring_types' => $scoring_types);
+
+        $form = $this->createForm(TournamentType::class, $tournament, $options);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            /* @var $tournament Tournament */
+            $tournament = $form->getData();
+
+            $this->submittedForm($em, $tournament);
+        }
+
+        return $this->render('admin/tournaments/new.html.twig', array(
+            'form' => $form->createView(),
+            'sports' => $sports
+        ));
+    }
+
+    /**
+     * On form submit
+     * @param EntityManager $em
+     * @param Tournament $data
+     */
+    private function submittedForm(EntityManager $em, Tournament $data)
+    {
+        $tournament = $this->newTournament($em, $data);
+        $sports = $em->getRepository('AppBundle:Sport')->findAll();
+        $scoringTypes = $em->getRepository('AppBundle:ScoringType')->findAll();
+        $statuses = $em->getRepository('AppBundle:MatchStatus')->findAll();
+
+        $builder = new TournamentBuilder($data, $tournament, $sports, $statuses);
+        $builder->setScoringTypes($scoringTypes);
+
+        if ($builder->create()) {
+            $teams = $builder->getTeams();
+            $this->saveArray($teams, $em);
+
+            $sports = $builder->getSports();
+            $this->saveArray($sports, $em);
+
+            $scorings = $builder->getScoring();
+            $this->saveArray($scorings, $em);
+
+            $matches = $builder->getMatches();
+            foreach($matches as $sport_matches) {
+                $this->saveArray($sport_matches, $em);
+            }
+        }
+    }
+
+    /**
+     * Create new tournament in db
+     *
+     * @param EntityManager $em
+     * @param Tournament $data
+     * @return \AppBundle\Entity\Tournament
+     */
+    private function newTournament(EntityManager $em, Tournament $data)
+    {
+        $repository = $em->getRepository('AppBundle:Tournament');
+        /* @var $t \AppBundle\Entity\Tournament */
+        foreach($repository->findAll() as $t) {
+            $t->setActive(false);
+        }
+
+        $em->flush();
+
+        $tournament = new \AppBundle\Entity\Tournament();
+        $tournament->setTitle($data->getTitle());
+        $tournament->setActive(true);
+        $tournament->setCreated(new \DateTime());
+        $em->persist($tournament);
+
+        $em->flush();
+
+        return $tournament;
+    }
+
+    /**
+     * Save array of entities
+     * @param $data
+     * @param EntityManager $em
+     */
+    private function saveArray($data, EntityManager $em)
+    {
+        foreach ($data as $entity) {
+            $em->persist($entity);
+        }
+
+        $em->flush();
+    }
+
+    /**
+     * Route for detail of tournament
+     * @Route("/turnaje/{id}-{name}", name="tournaments_detail")
+     * @param $id
+     * @param $name
+     * @return Response
+     */
+    public function detailAction($id, $name)
+    {
+        return new Response();
+    }
+}

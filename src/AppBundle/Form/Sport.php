@@ -12,33 +12,129 @@ use AppBundle\Entity\Scoring;
 
 include_once(__DIR__ . '/../Entity/ScoringType.php');
 
+/**
+ * Sport type Football
+ * @var string
+ */
 define('SPORT_FOTBAL', 1);
+/**
+ * Sport type Football (nohejbal)
+ * @var string
+ */
 define('SPORT_NOHEJBAL', 2);
+/**
+ * Sport type Basketball
+ * @var string
+ */
 define('SPORT_BASKETBAL', 3);
+/**
+ * Sport type Volleyball
+ * @var string
+ */
 define('SPORT_VOLEJBAL', 4);
+/**
+ * Sport type Ringo
+ * @var string
+ */
 define('SPORT_RINGO', 5);
+/**
+ * Sport type Rope
+ * @var string
+ */
 define('SPORT_PRETAH_LANEM', 6);
+/**
+ * Sport type Ping pong
+ * @var string
+ */
 define('SPORT_PING_PONG', 7);
+/**
+ * Sport type Push-ups
+ * @var string
+ */
 define('SPORT_SHYBY', 8);
+/**
+ * Sport type Darts
+ * @var string
+ */
 define('SPORT_SIPKY', 9);
+/**
+ * Sport type Jumping
+ * @var string
+ */
 define('SPORT_TROJSKOK', 10);
 
+/**
+ * Class Sport
+ * @package AppBundle\Form
+ */
 class Sport implements \ArrayAccess
 {
+    /**
+     * ID
+     * @var int
+     */
     private $id;
+    /**
+     * Title
+     * @var string
+     */
     private $title;
+    /**
+     * Active
+     * @var bool
+     */
     private $active;
 
+    /**
+     * Scoring type
+     * @var int
+     */
     private $scoring_type = TYPE_INDIVIDUALS;
+    /**
+     * Win points
+     * @var null|int
+     */
     private $win = null;
+    /**
+     * Is draw
+     * @var bool
+     */
     private $isDraw = false;
+    /**
+     * Draw points
+     * @var null|int
+     */
     private $draw = null;
+    /**
+     * Lose points
+     * @var null|int
+     */
     private $lose = null;
+    /**
+     * Forfeit points
+     * @var null|int
+     */
     private $forfeit = null;
+    /**
+     * Sets
+     * @var null|int
+     */
     private $sets = null;
+    /**
+     * Set points
+     * @var null|int
+     */
     private $set_points = null;
+    /**
+     * Match time
+     * @var null|int
+     */
     private $time = null;
 
+    /**
+     * Default construct
+     * @param \AppBundle\Entity\Sport|null $sport
+     */
     public function __construct(\AppBundle\Entity\Sport $sport = null)
     {
         if($sport != null) {
@@ -51,6 +147,7 @@ class Sport implements \ArrayAccess
     }
 
     /**
+     * Create scoring
      * @return \AppBundle\Entity\Scoring
      */
     public function createScoring()
@@ -71,7 +168,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
-     * @return mixed
+     * Get id
+     * @return int
      */
     public function getId()
     {
@@ -79,7 +177,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
-     * @param mixed $id
+     * Set id
+     * @param int $id
      */
     public function setId($id)
     {
@@ -87,7 +186,9 @@ class Sport implements \ArrayAccess
     }
 
     /**
-     * @return mixed
+     * Get title
+     *
+     * @return string
      */
     public function getTitle()
     {
@@ -95,7 +196,9 @@ class Sport implements \ArrayAccess
     }
 
     /**
-     * @param mixed $title
+     * Set title
+     *
+     * @param string $title
      */
     public function setTitle($title)
     {
@@ -103,7 +206,9 @@ class Sport implements \ArrayAccess
     }
 
     /**
-     * @return mixed
+     * Get active
+     *
+     * @return bool
      */
     public function getActive()
     {
@@ -111,7 +216,9 @@ class Sport implements \ArrayAccess
     }
 
     /**
-     * @param mixed $active
+     * Set active
+     *
+     * @param bool $active
      */
     public function setActive($active)
     {
@@ -119,6 +226,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
+     * Get scoring type
+     *
      * @return mixed
      */
     public function getScoringType()
@@ -127,6 +236,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
+     * Set scoring type
+     *
      * @param mixed $scoring_type
      */
     public function setScoringType($scoring_type)
@@ -135,6 +246,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
+     * Get win
+     *
      * @return mixed
      */
     public function getWin()
@@ -143,6 +256,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
+     * SetWin
+     *
      * @param mixed $win
      */
     public function setWin($win)
@@ -151,6 +266,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
+     * Is draw
+     *
      * @return mixed
      */
     public function getIsDraw()
@@ -159,6 +276,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
+     * Set draw
+     *
      * @param mixed $isDraw
      */
     public function setIsDraw($isDraw)
@@ -167,6 +286,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
+     * Get draw
+     *
      * @return mixed
      */
     public function getDraw()
@@ -175,6 +296,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
+     * Set draw
+     *
      * @param mixed $draw
      */
     public function setDraw($draw)
@@ -183,6 +306,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
+     * Get lose
+     *
      * @return mixed
      */
     public function getLose()
@@ -191,6 +316,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
+     * Set lose
+     *
      * @param mixed $lose
      */
     public function setLose($lose)
@@ -199,6 +326,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
+     * Get forfeit
+     *
      * @return mixed
      */
     public function getForfeit()
@@ -207,6 +336,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
+     * Set forfeit
+     *
      * @param mixed $forfeit
      */
     public function setForfeit($forfeit)
@@ -215,6 +346,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
+     * Get sets
+     *
      * @return mixed
      */
     public function getSets()
@@ -223,6 +356,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
+     * Set sets
+     *
      * @param mixed $sets
      */
     public function setSets($sets)
@@ -231,6 +366,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
+     * Get set points
+     *
      * @return mixed
      */
     public function getSetPoints()
@@ -239,6 +376,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
+     * Set set points
+     *
      * @param mixed $set_points
      */
     public function setSetPoints($set_points)
@@ -247,6 +386,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
+     * Get time
+     *
      * @return mixed
      */
     public function getTime()
@@ -255,6 +396,8 @@ class Sport implements \ArrayAccess
     }
 
     /**
+     * Set time
+     *
      * @param mixed $time
      */
     public function setTime($time)
@@ -324,6 +467,10 @@ class Sport implements \ArrayAccess
         $this->$offset = null;
     }
 
+    /**
+     * Init attributes
+     * @param \AppBundle\Entity\Sport $sport
+     */
     private function initAttributes(\AppBundle\Entity\Sport $sport) {
 
         switch($sport->getId()) {

@@ -21,6 +21,7 @@ use RestBundle\Model\RestSerializable;
 class Performance implements RestSerializable, TimeResult
 {
     /**
+     * Id of performance
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -28,55 +29,65 @@ class Performance implements RestSerializable, TimeResult
     private $id;
 
     /**
+     * Id of team
      * @ORM\Column(type="integer", name="team")
      */
     private $team_id;
 
     /**
+     * Team object
      * @ORM\ManyToOne(targetEntity="Team")
      * @ORM\JoinColumn(name="team", referencedColumnName="id")
      */
     private $team;
 
     /**
+     * Id of sport
      * @ORM\Column(type="integer", name="sport")
      */
     private $sport_id;
 
     /**
+     * Sport object
      * @ORM\ManyToOne(targetEntity="Sport")
      * @ORM\JoinColumn(name="sport", referencedColumnName="id")
      */
     private $sport;
 
     /**
+     * Id of tournament
      * @ORM\Column(type="integer", name="tournament")
      */
     private $tournament_id;
 
     /**
+     * Tournament object
      * @ORM\ManyToOne(targetEntity="Tournament")
      * @ORM\JoinColumn(name="tournament", referencedColumnName="id")
      */
     private $tournament;
 
     /**
+     * Points of performance
      * @ORM\Column(type="integer")
      */
     private $points;
 
     /**
+     * Id of referee
      * @ORM\Column(type="integer", name="referee")
      */
     private $referee_id;
 
     /**
+     * Referee object
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="referee", referencedColumnName="id")
      */
     private $referee;
 
     /**
+     * Date of last change
      * @ORM\Column(type="datetime")
      */
     private $date;

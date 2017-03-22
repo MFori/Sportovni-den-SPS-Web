@@ -10,13 +10,33 @@ namespace AppBundle\Model;
 
 use AppBundle\Entity\Notification;
 
+/**
+ * Class NotificationsManager
+ * @package AppBundle\Model
+ */
 class NotificationsManager
 {
+    /**
+     * Firebase key
+     * @var string
+     */
     private static $FCM_KEY = 'AAAA9hs2H8Y:APA91bEnwdV4jK3zo2fzROKRDB3raLBOL-magjVkpLlVo16wGbW5MudHn2H7WkWChOsMf_E_knstBKXal8deLKtC_cRjABt5s9Z01YJHNhH2Mywty5XXMd_qSyDihi2P00yG3YxVECgd';
+    /**
+     * Firebase URL
+     * @var string
+     */
     private static $FCM_URL = 'https://fcm.googleapis.com/fcm/send';
 
+    /**
+     * Private construct
+     */
     private function __construct(){}
 
+    /**
+     * Send notification via FCM
+     * @param Notification $notification
+     * @return bool
+     */
     public static function send(Notification $notification)
     {
         $fields = array(

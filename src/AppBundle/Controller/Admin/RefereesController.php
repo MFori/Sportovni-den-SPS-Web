@@ -17,9 +17,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use AppBundle\Form\UserType;
 
+/**
+ * Class RefereesController
+ * @package AppBundle\Controller\Admin
+ */
 class RefereesController extends Controller
 {
     /**
+     * Route for list of referees
      * @Route("/rozhodci", name="referees")
      * @return Response
      */
@@ -31,6 +36,7 @@ class RefereesController extends Controller
     }
 
     /**
+     * Route for creating referee
      * @Route("/rozhodci/novy", name="referees_new")
      * @Route("/rozhodci/upravit/{id}", name="referees_edit")
      * @param $id
@@ -127,6 +133,7 @@ class RefereesController extends Controller
     }
 
     /**
+     * Route for detail of referee
      * @Route("/rozhodci/detail/{id}", name="referees_detail")
      * @param $id
      * @return Response
@@ -140,6 +147,7 @@ class RefereesController extends Controller
     }
 
     /**
+     * Route for deleting referee
      * @Route("/rozhodci/odstranit/{id}", name="referees_delete")
      * @param $id
      * @return Response

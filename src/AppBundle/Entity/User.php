@@ -21,6 +21,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class User implements UserInterface, \Serializable, RestSerializable
 {
     /**
+     * Id of user
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -28,37 +29,50 @@ class User implements UserInterface, \Serializable, RestSerializable
     private $id;
 
     /**
+     * Users roles (role1;role2)
      * @ORM\Column(type="string")
      */
     private $roles;
 
     /**
+     * Users email
      * @ORM\Column(type="string")
      */
     private $email;
 
     /**
+     * Users username
      * @ORM\Column(type="string", name="name")
      */
     private $username;
 
     /**
+     * Hash of users pass
      * @ORM\Column(type="string")
      */
     private $password;
 
     /**
+     * Salt for hash of pass
      * @ORM\Column(type="string")
      */
     private $salt;
 
     /**
+     * Api key
      * @ORM\Column(type="string", name="api_key")
      */
     private $apiKey;
 
+    /**
+     * Plain users pass
+     * @var string
+     */
     private $plainPassword;
 
+    /**
+     * Construct, generating salt
+     */
     function __construct()
     {
         $this->salt = md5(uniqid(null, true));
@@ -100,6 +114,7 @@ class User implements UserInterface, \Serializable, RestSerializable
     }
 
     /**
+     * Is admin?
      * @return bool
      */
     public function isAdmin()
@@ -274,7 +289,8 @@ class User implements UserInterface, \Serializable, RestSerializable
     }
 
     /**
-     * @return mixed
+     * Get plain password
+     * @return string
      */
     public function getPlainPassword()
     {
@@ -282,7 +298,8 @@ class User implements UserInterface, \Serializable, RestSerializable
     }
 
     /**
-     * @param mixed $plainPassword
+     * Set plain password
+     * @param string $plainPassword
      */
     public function setPlainPassword($plainPassword)
     {

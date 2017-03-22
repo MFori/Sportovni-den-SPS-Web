@@ -29,16 +29,19 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class RestController extends Controller
 {
     /**
+     * Logged user
      * @var User
      */
     private $user;
 
     /**
+     * Current request object
      * @var Request
      */
     private $request;
 
     /**
+     * Current active tournament
      * @var Tournament
      */
     private $tournament;
@@ -53,6 +56,7 @@ class RestController extends Controller
     }
 
     /**
+     * Fired for calling each not public method - check user and etc.
      * @param $method
      * @param $params
      * @return mixed
@@ -81,6 +85,7 @@ class RestController extends Controller
     }
 
     /**
+     * Try to login user by apiKey in header of request
      * @param Request $request
      * @return User
      * @throws UnauthorizedException
@@ -101,6 +106,8 @@ class RestController extends Controller
     }
 
     /**
+     * Get user
+     *
      * @return User
      */
     protected function getUser()
@@ -109,6 +116,8 @@ class RestController extends Controller
     }
 
     /**
+     * Get request
+     *
      * @return Request
      */
     protected function getRequest()
@@ -120,6 +129,8 @@ class RestController extends Controller
     }
 
     /**
+     * Create json response
+     *
      * @param array $data
      * @param null $httpStatus
      * @param array $errors
@@ -144,6 +155,8 @@ class RestController extends Controller
     }
 
     /**
+     * Create error for response
+     *
      * @param $errorCode
      * @param null $message
      * @param array $todo
@@ -155,6 +168,8 @@ class RestController extends Controller
     }
 
     /**
+     * Get repository by criteria in url (GET params)
+     *
      * @param $objectName
      * @param $criteria array
      * @return array
@@ -226,12 +241,14 @@ class RestController extends Controller
     }
 
     /**
+     * Check if tournament is active
+     *
      * @param int $id
      * @param Tournament $tournament
      * @return bool
      * @throws BadRequestException
      */
-    private function isTournamentActive($tournament, $id)
+    private function isTournamentActive(Tournament $tournament, $id)
     {
         if ($id == null)
             throw new BadRequestException();
@@ -240,6 +257,8 @@ class RestController extends Controller
     }
 
     /**
+     * Get current active tournament
+     *
      * @return Tournament
      */
     protected function getActiveTournament()

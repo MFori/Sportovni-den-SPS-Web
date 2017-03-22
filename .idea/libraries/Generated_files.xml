@@ -2,17 +2,62 @@
   <library name="Generated files" type="javaScript">
     <properties>
       <sourceFilesUrls>
-        <item url="file://$PROJECT_DIR$/web/Resources/js/page/referees.min.js" />
-        <item url="file://$PROJECT_DIR$/web/Resources/js/util/jquery.tablesorter.min.js" />
-        <item url="file://$PROJECT_DIR$/web/Resources/js/main.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/jquery.iviewer.min.js" />
         <item url="file://$PROJECT_DIR$/web/Resources/js/page/tournaments.min.js" />
+        <item url="file://$PROJECT_DIR$/web/Resources/js/page/referees.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/ui/1.10.4/jquery-ui.min.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/jquery.iviewer.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/bootstrap.min.min.js" />
+        <item url="file://$PROJECT_DIR$/web/Resources/js/util/jquery.tablesorter.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/jquery-1.11.0.min.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/jquery.smooth-scroll.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/css/phpdocumentor-clean-icons/lte-ie7.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/jquery.iviewer.min.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/jquery.mousewheel.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/prism.min.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/html5.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/jquery.dotdotdot-1.5.9.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/html5.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/jquery.mousewheel.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/css/phpdocumentor-clean-icons/lte-ie7.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/jquery.smooth-scroll.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/jquery.iviewer.min.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/prism.min.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/jquery-1.11.0.min.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/bootstrap.min.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/jquery.dotdotdot-1.5.9.min.min.js" />
+        <item url="file://$PROJECT_DIR$/docs/js/ui/1.10.4/jquery-ui.min.min.js" />
+        <item url="file://$PROJECT_DIR$/web/Resources/js/main.min.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/web/Resources/js/page/referees.min.js" />
-      <root url="file://$PROJECT_DIR$/web/Resources/js/util/jquery.tablesorter.min.js" />
-      <root url="file://$PROJECT_DIR$/web/Resources/js/main.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/jquery.dotdotdot-1.5.9.min.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/jquery.iviewer.min.js" />
       <root url="file://$PROJECT_DIR$/web/Resources/js/page/tournaments.min.js" />
+      <root url="file://$PROJECT_DIR$/web/Resources/js/page/referees.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/ui/1.10.4/jquery-ui.min.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/jquery.iviewer.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/bootstrap.min.min.js" />
+      <root url="file://$PROJECT_DIR$/web/Resources/js/util/jquery.tablesorter.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/jquery-1.11.0.min.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/jquery.smooth-scroll.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/css/phpdocumentor-clean-icons/lte-ie7.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/jquery.iviewer.min.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/jquery.mousewheel.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/prism.min.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/html5.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/jquery.dotdotdot-1.5.9.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/html5.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/jquery.mousewheel.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/css/phpdocumentor-clean-icons/lte-ie7.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/jquery.smooth-scroll.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/jquery.iviewer.min.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/prism.min.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/jquery-1.11.0.min.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/bootstrap.min.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/jquery.dotdotdot-1.5.9.min.min.js" />
+      <root url="file://$PROJECT_DIR$/docs/js/ui/1.10.4/jquery-ui.min.min.js" />
+      <root url="file://$PROJECT_DIR$/web/Resources/js/main.min.js" />
     </CLASSES>
     <SOURCES />
   </library>

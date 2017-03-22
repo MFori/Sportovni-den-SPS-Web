@@ -20,6 +20,7 @@ use RestBundle\Model\RestSerializable;
 class Team implements \ArrayAccess, RestSerializable
 {
     /**
+     * Id of team
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -27,11 +28,13 @@ class Team implements \ArrayAccess, RestSerializable
     private $id;
 
     /**
+     * Name of team
      * @ORM\Column(type="string")
      */
     private $name;
 
     /**
+     * Is team active?
      * @ORM\Column(type="boolean")
      */
     private $active;

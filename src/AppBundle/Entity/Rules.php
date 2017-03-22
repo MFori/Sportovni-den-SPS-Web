@@ -20,33 +20,39 @@ use RestBundle\Model\RestSerializable;
 class Rules implements RestSerializable
 {
     /**
+     * Sport id
      * @ORM\Id
      * @ORM\Column(type="integer", name="sport")
      */
     private $sport_id;
 
     /**
+     * Sport object
      * @ORM\OneToOne(targetEntity="Sport", inversedBy="rules")
      * @ORM\JoinColumn(name="sport", referencedColumnName="id")
      */
     private $sport;
 
     /**
+     * Rules text
      * @ORM\Column(type="text")
      */
     private $text;
 
     /**
+     * Edited date
      * @ORM\Column(type="datetime", name="edit_date")
      */
     private $editDate;
 
     /**
+     * Id of user that last edit rules
      * @ORM\Column(type="integer", name="edit_user")
      */
     private $editUser_id;
 
     /**
+     * User object
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="edit_user", referencedColumnName="id")
      */

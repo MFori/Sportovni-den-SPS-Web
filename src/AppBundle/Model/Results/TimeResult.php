@@ -8,7 +8,15 @@
 
 namespace AppBundle\Model\Results;
 
+/**
+ * Interface TimeResult
+ * @package AppBundle\Model\Results
+ */
 interface TimeResult
 {
+    /**
+     * Get date
+     * @return mixed
+     */
     public function getDate();
 }

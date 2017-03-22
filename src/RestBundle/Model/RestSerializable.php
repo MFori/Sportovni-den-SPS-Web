@@ -8,6 +8,10 @@
 
 namespace RestBundle\Model;
 
+/**
+ * Interface RestSerializable
+ * @package RestBundle\Model
+ */
 interface RestSerializable
 {
     /**

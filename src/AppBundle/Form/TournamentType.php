@@ -16,15 +16,28 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class TournamentType
+ * @package AppBundle\Form
+ */
 class TournamentType extends AbstractType
 {
 
+    /**
+     * Configure options
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array('scoring_types' => array()));
         parent::configureOptions($resolver);
     }
 
+    /**
+     * Build form
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

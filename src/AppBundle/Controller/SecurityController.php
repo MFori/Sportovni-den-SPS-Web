@@ -1,5 +1,7 @@
 <?php
-
+/***
+ * Security controller
+ */
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -8,9 +10,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
+/**
+ * Class SecurityController
+ * @package AppBundle\Controller
+ */
 class SecurityController extends Controller
 {
     /**
+     * Route for login
      * @Route("/prihlaseni", name="login")
      * @param Request $request
      * @return Response
@@ -37,6 +44,7 @@ class SecurityController extends Controller
     }
 
     /**
+     * Route for logout
      * @Route("/odhlaseni", name="logout")
      */
     public function logoutAction()
@@ -45,7 +53,9 @@ class SecurityController extends Controller
     }
 
     /**
+     * Text route TODO: delete
      * @Route("/test")
+     * @param Request $request
      * @return Response
      */
     public function test(Request $request)

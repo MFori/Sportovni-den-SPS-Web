@@ -8,8 +8,16 @@
 
 namespace AppBundle\Model;
 
+/**
+ * Class DateUtils
+ * @package AppBundle\Model
+ */
 class DateUtils
 {
+    /**
+     * List of months
+     * @var array
+     */
     private static $months = array(
         '01' => 'Leden',
         '02' => 'Únor',
@@ -25,6 +33,10 @@ class DateUtils
         '12' => 'Prosinec',
     );
 
+    /**
+     * Generate title for new tournament
+     * @return string
+     */
     public static function createTournamentName()
     {
         return self::$months[date('m')] . ' ' . date('Y');

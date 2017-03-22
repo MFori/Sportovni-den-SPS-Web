@@ -8,13 +8,21 @@
 
 namespace RestBundle\Model;
 
+/**
+ * Class ErrorManager
+ * @package RestBundle\Model
+ */
 class ErrorManager
 {
+    /**
+     * Private construct
+     */
     private function __construct()
     {
     }
 
     /**
+     * Get error
      * @param int $error
      * @param null $message
      * @param array $todo
@@ -36,6 +44,7 @@ class ErrorManager
     }
 
     /**
+     * List of error messages
      * @var array
      */
     private static $ErrorMessages = array(
@@ -46,6 +55,10 @@ class ErrorManager
         Error::OLD_DATA      => 'Requested data are out of date.',
     );
 
+    /**
+     * List of todo messages
+     * @var array
+     */
     private static $TodoMessages = array(
         Error::TODO_CLEAR_CACHE => 'Clear the cache.',
         Error::TODO_LOGOUT      => 'Logout user.',

@@ -22,6 +22,7 @@ use RestBundle\Model\RestSerializable;
 class Match implements RestSerializable, TimeResult
 {
     /**
+     * Id of match
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -29,11 +30,13 @@ class Match implements RestSerializable, TimeResult
     private $id;
 
     /**
+     * Id of sport
      * @ORM\Column(type="integer", name="sport")
      */
     private $sport_id;
 
     /**
+     * Sport object
      * @ORM\ManyToOne(targetEntity="Sport")
      * @ORM\JoinColumn(name="sport", referencedColumnName="id")
      * @var Sport
@@ -41,82 +44,97 @@ class Match implements RestSerializable, TimeResult
     private $sport;
 
     /**
+     * Id of tournament
      * @ORM\Column(type="integer", name="tournament")
      */
     private $tournament_id;
 
     /**
+     * Tournament object
      * @ORM\ManyToOne(targetEntity="Tournament")
      * @ORM\JoinColumn(name="tournament", referencedColumnName="id")
      */
     private $tournament;
 
     /**
+     * Id of team1
      * @ORM\Column(type="integer", name="team_1")
      */
     private $team1_id;
 
     /**
+     * Team1 object
      * @ORM\ManyToOne(targetEntity="Team")
      * @ORM\JoinColumn(name="team_1", referencedColumnName="id")
      */
     private $team1;
 
     /**
+     * Id of team2
      * @ORM\Column(type="integer", name="team_2")
      */
     private $team2_id;
 
     /**
+     * Team2 object
      * @ORM\ManyToOne(targetEntity="Team")
      * @ORM\JoinColumn(name="team_2", referencedColumnName="id")
      */
     private $team2;
 
     /**
+     * Score1
      * @ORM\Column(type="integer", name="score_1")
      */
     private $score1;
 
     /**
+     * Score2
      * @ORM\Column(type="integer", name="score_2")
      */
     private $score2;
 
     /**
+     * Group of match
      * @ORM\Column(type="integer", name="`group`")
      */
     private $group;
 
 
     /**
+     * Is group core?
      * @ORM\Column(type="boolean", name="core_group")
      */
     private $coreGroup;
 
     /**
+     * Id of match status
      * @ORM\Column(type="integer", name="status")
      */
     private $status_id;
 
     /**
+     * Status object
      * @ORM\ManyToOne(targetEntity="MatchStatus")
      * @ORM\JoinColumn(name="status", referencedColumnName="id")
      */
     private $status;
 
     /**
+     * Id of referee
      * @ORM\Column(type="integer", name="referee")
      */
     private $referee_id;
 
     /**
+     * Referee object
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="referee", referencedColumnName="id")
      */
     private $referee;
 
     /**
+     * Date of last edit match
      * @ORM\Column(type="datetime")
      */
     private $date;

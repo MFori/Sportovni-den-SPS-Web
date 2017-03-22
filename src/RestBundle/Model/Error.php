@@ -8,6 +8,10 @@
 
 namespace RestBundle\Model;
 
+/**
+ * Class Error
+ * @package RestBundle\Model
+ */
 class Error implements RestSerializable
 {
     // Url does not exist (or combination with url and http request method)
@@ -26,18 +30,27 @@ class Error implements RestSerializable
     const TODO_SHOW = 3;
 
     /**
+     * Code
      * @var integer
      */
     private $code;
     /**
+     * Message
      * @var string
      */
     private $message;
     /**
+     * TODO
      * @var array
      */
     private $todo;
 
+    /**
+     * Default construct
+     * @param int $code
+     * @param string $message
+     * @param array $todo
+     */
     public function __construct($code, $message = '', $todo = array())
     {
         $this->code = $code;
@@ -46,6 +59,8 @@ class Error implements RestSerializable
     }
 
     /**
+     * Get code
+     *
      * @return int
      */
     public function getCode()
@@ -54,6 +69,8 @@ class Error implements RestSerializable
     }
 
     /**
+     * Set code
+     *
      * @param int $code
      */
     public function setCode($code)
@@ -62,6 +79,8 @@ class Error implements RestSerializable
     }
 
     /**
+     * Get message
+     *
      * @return string
      */
     public function getMessage()
@@ -70,6 +89,8 @@ class Error implements RestSerializable
     }
 
     /**
+     * Set message
+     *
      * @param string $message
      */
     public function setMessage($message)
@@ -78,6 +99,8 @@ class Error implements RestSerializable
     }
 
     /**
+     * Get to_do
+     *
      * @return array
      */
     public function getTodo()
@@ -86,6 +109,7 @@ class Error implements RestSerializable
     }
 
     /**
+     * Set to_do
      * @param array $todos
      */
     public function setTodo($todos)
@@ -94,6 +118,8 @@ class Error implements RestSerializable
     }
 
     /**
+     * Add to to_do
+     *
      * @param $todo integer
      */
     public function addTodo($todo)

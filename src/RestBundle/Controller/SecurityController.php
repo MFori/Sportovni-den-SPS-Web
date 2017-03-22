@@ -62,6 +62,7 @@ class SecurityController extends RestController
     }
 
     /**
+     * Route of Rest for getting current active tournament
      * @Route("/tournaments/active")
      * @Method("GET")
      * @return RestResponse

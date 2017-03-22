@@ -15,9 +15,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class RulesController
+ * Controller for editing rules of sports.
+ * @package AppBundle\Controller\Referee
+ */
 class RulesController extends Controller
 {
     /**
+     * Route that display list of sports for edit rules.
      * @Route("/pravidla", name="rules")
      * @return Response
      */
@@ -29,6 +35,7 @@ class RulesController extends Controller
     }
 
     /**
+     * Route for editing selected sports rules.
      * @Route("/pravidla/{sport}", name="sport_rules")
      * @param $sport int
      * @param $request Request

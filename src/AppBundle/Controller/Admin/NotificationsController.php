@@ -12,9 +12,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class NotificationsController
+ * @package AppBundle\Controller\Admin
+ */
 class NotificationsController extends Controller
 {
     /**
+     * Route for show all notifications
      * @Route("/notifikace", name="notifications")
      * @return Response
      */

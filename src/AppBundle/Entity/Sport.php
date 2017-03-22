@@ -20,6 +20,7 @@ use RestBundle\Model\RestSerializable;
 class Sport implements RestSerializable
 {
     /**
+     * Id of sport
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -27,20 +28,28 @@ class Sport implements RestSerializable
     private $id;
 
     /**
+     * Name of sport
      * @ORM\Column(type="string")
      */
     private $name;
 
     /**
+     * Is sport active?
      * @ORM\Column(type="boolean")
      */
     private $active;
 
     /**
+     * Sports rules
      * @ORM\OneToOne(targetEntity="Rules", mappedBy="sport")
      */
     private $rules;
 
+    /**
+     * Set id
+     *
+     * @param int $id
+     */
     public function setId($id)
     {
         $this->id = $id;

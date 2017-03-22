@@ -20,6 +20,7 @@ use RestBundle\Model\RestSerializable;
 class Tournament implements RestSerializable
 {
     /**
+     * Tournaments id
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -27,16 +28,19 @@ class Tournament implements RestSerializable
     private $id;
 
     /**
+     * Tournaments title
      * @ORM\Column(type="string")
      */
     private $title;
 
     /**
+     * Date of tournament created
      * @ORM\Column(type="datetime")
      */
     private $created;
 
     /**
+     * Is tournament active?
      * @ORM\Column(type="boolean")
      */
     private $active;

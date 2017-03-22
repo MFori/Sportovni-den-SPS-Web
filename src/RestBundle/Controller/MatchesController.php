@@ -26,6 +26,7 @@ use Symfony\Component\HttpFoundation\Request;
 class MatchesController extends RestController
 {
     /**
+     * Route for Rest request of matches/match
      * @Route("/matches/{id}", defaults={"id": null}, requirements={"id": "\d+"})
      * @Method("GET")
      * @param $id
@@ -49,6 +50,7 @@ class MatchesController extends RestController
     }
 
     /**
+     * Get groups
      * @param $matches Match[]
      * @return \AppBundle\Model\SimpleGroup[]
      */
@@ -102,6 +104,7 @@ class MatchesController extends RestController
     }
 
     /**
+     * Compare groups by group
      * @param SimpleGroup $a
      * @param SimpleGroup $b
      * @return int
@@ -112,6 +115,7 @@ class MatchesController extends RestController
     }
 
     /**
+     * Route for Rest request of updating match/matches
      * @Route("/matches/{id}", defaults={"id": null}, requirements={"id": "\d+"})
      * @Method("PUT")
      * @param $id
@@ -156,6 +160,7 @@ class MatchesController extends RestController
     }
 
     /**
+     * Update match
      * @param Match $match
      * @param array $data
      * @throws BadRequestException

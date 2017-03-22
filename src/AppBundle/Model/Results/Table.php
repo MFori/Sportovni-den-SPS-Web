@@ -11,16 +11,26 @@ namespace AppBundle\Model\Results;
 use AppBundle\Entity\Team;
 use RestBundle\Model\RestSerializable;
 
+/**
+ * Class Table
+ * @package AppBundle\Model\Results
+ */
 class Table implements RestSerializable
 {
     /**
+     * Lines
      * @var TableLine[]
      */
     private $lines = array();
 
+    /**
+     * Sort
+     * @var bool|true
+     */
     private $sort = true;
 
     /**
+     * Public construct
      * @param bool|true $sort
      */
     public function __construct($sort = true)
@@ -29,6 +39,7 @@ class Table implements RestSerializable
     }
 
     /**
+     * Get lines
      * @param bool|true $sort
      * @return TableLine[]
      */
@@ -53,6 +64,7 @@ class Table implements RestSerializable
     }
 
     /**
+     * Get position of team
      * @param Team $team
      * @return int|null
      */
@@ -66,6 +78,11 @@ class Table implements RestSerializable
         return null;
     }
 
+    /**
+     * Check if is team in table
+     * @param Team $team
+     * @return bool
+     */
     public function hasTeam(Team $team)
     {
         $lines = $this->getLines(true);
@@ -77,6 +94,7 @@ class Table implements RestSerializable
     }
 
     /**
+     * Get line at position
      * @param $position
      * @return TableLine|null
      */
@@ -87,6 +105,7 @@ class Table implements RestSerializable
     }
 
     /**
+     * Add new line
      * @param TableLine $line
      */
     public function addLine(TableLine $line)
@@ -95,6 +114,7 @@ class Table implements RestSerializable
     }
 
     /**
+     * Set multiple lines
      * @param array $lines
      */
     public function setLines($lines = array())
@@ -103,6 +123,7 @@ class Table implements RestSerializable
     }
 
     /**
+     * Compare lines by points and etc.
      * @param TableLine $a
      * @param TableLine $b
      * @return int

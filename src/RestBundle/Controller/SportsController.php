@@ -19,6 +19,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 class SportsController extends RestController
 {
     /**
+     * Route of Rest for getting sports
      * @Route("/sports")
      * @Method("GET")
      * @return \RestBundle\Model\RestResponse

@@ -25,6 +25,7 @@ use Symfony\Component\HttpFoundation\Request;
 class NotificationsController extends RestController
 {
     /**
+     * Route of Rest for sending notification
      * @Route("/notifications")
      * @Method("POST")
      * @param Request $request
@@ -70,6 +71,7 @@ class NotificationsController extends RestController
     }
 
     /**
+     * Route of Rest for getting addressees
      * @Route("/addressees")
      * @Method("GET")
      * @return \RestBundle\Model\RestResponse
@@ -84,6 +86,7 @@ class NotificationsController extends RestController
     }
 
     /**
+     * Route of Rest for getting notification(s)
      * @Route("/notifications/{id}", defaults={"id": null}, requirements={"id": "\d+"})
      * @Method("GET")
      * @param null $id

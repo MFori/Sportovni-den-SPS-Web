@@ -18,6 +18,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 class TeamsController extends RestController
 {
     /**
+     * Route for rest request of teams
      * @Route("/teams")
      * @Method("GET")
      * @return \RestBundle\Model\RestResponse

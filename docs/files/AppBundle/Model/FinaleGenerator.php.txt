@@ -1,0 +1,189 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Martin Forejt, forejt.martin97@gmail.com
+ * Date: 21.12.2016
+ * Time: 19:06
+ */
+
+namespace AppBundle\Model;
+
+/**
+ * Class FinaleGenerator
+ * @package AppBundle\Model
+ */
+class FinaleGenerator extends MatchesGenerator
+{
+    /**
+     * Groups
+     * @var array
+     */
+    protected $groups;
+
+    /**
+     * Generate matches
+     *
+     * @return array
+     */
+    public function generate()
+    {
+        $this->createGroups();
+
+        $matches = array();
+
+        for ($i = 0; $i < sizeof($this->groups); $i++) {
+            $matches = array_merge($matches, $this->createRobinMatches($this->groups[$i], array(
+                'group' => ($i + 1),
+                'status' => $this->defaultStatus,
+                'core_group' => true
+            )));
+        }
+
+        return array_merge($matches, $this->createFinale());
+    }
+
+    /**
+     * Create groups
+     */
+    private function createGroups()
+    {
+        list($year1, $year2, $year3, $year4) = $this->createGroupsByYear();
+        $year1 = $this->storeIfFull($year1);
+        $year2 = $this->storeIfFull($year2);
+        $year3 = $this->storeIfFull($year3);
+        $year4 = $this->storeIfFull($year4);
+
+        $freeTeams = array();
+        if (is_array($year1)) $freeTeams = array_merge($freeTeams, $year1);
+        if (is_array($year2)) $freeTeams = array_merge($freeTeams, $year2);
+        if (is_array($year3)) $freeTeams = array_merge($freeTeams, $year3);
+        if (is_array($year4)) $freeTeams = array_merge($freeTeams, $year4);
+
+        if (sizeof($freeTeams) == 0) return;
+        else if (sizeof($freeTeams) == 1) {
+            $this->splitGroups($freeTeams[0]);
+        } else {
+            for ($i = 0; $i < sizeof($freeTeams) - 1; $i++) {
+                if ($this->getTeamYear($freeTeams[$i]) == $this->getTeamYear($freeTeams[$i + 1]) &&
+                    (!isset($freeTeams[$i + 2]) || isset($freeTeams[$i + 3]))
+                ) {
+                    $this->groups[] = array($freeTeams[$i], $freeTeams[$i + 1]);
+                    unset($freeTeams[$i]);
+                    unset($freeTeams[$i + 1]);
+                    $i++;
+                }
+            }
+
+            $freeTeams = array_values($freeTeams); // start at 0
+            while (sizeof($freeTeams) > 0) {
+                if (sizeof($freeTeams) > 4 || sizeof($freeTeams) == 3) {
+                    $group = array();
+                    for ($i = 0; $i < 3; $i++) {
+                        $group[] = $freeTeams[$i];
+                        unset($freeTeams[$i]);
+                    }
+                    $this->groups[] = $group;
+                    $freeTeams = array_values($freeTeams);
+                } else if (sizeof($freeTeams) == 4 || sizeof($freeTeams) == 2) {
+                    $group = array();
+                    for ($i = 0; $i < 2; $i++) {
+                        $group[] = $freeTeams[$i];
+                        unset($freeTeams[$i]);
+                    }
+                    $this->groups[] = $group;
+                    $freeTeams = array_values($freeTeams);
+                }
+            }
+        }
+    }
+
+    /**
+     * Create finale matches
+     *
+     * @return array
+     */
+    protected function createFinale()
+    {
+        $finale = array();
+        $matches = sizeof($this->groups) * (sizeof($this->groups) - 1) / 2;
+
+        if (sizeof($this->groups) > 1) {
+            for ($i = 0; $i < $matches; $i++) {
+                $m = $this->createDefault();
+                $m->setGroup(sizeof($this->groups) + 1);
+                $m->setCoreGroup(false);
+                $finale[] = $m;
+            }
+        }
+
+        return $finale;
+    }
+
+    /**
+     * Split group when generating
+     * @param $team
+     */
+    private function splitGroups($team)
+    {
+        $position = 0;
+        $year = 100;
+        foreach ($this->groups as $k => $group) {
+            $y = $this->getTeamYear($group[0]);
+            if (abs($year - $this->getTeamYear($team)) > abs($y - $this->getTeamYear($team))) {
+                $year = $y;
+                $position = $k;
+            }
+        }
+
+        shuffle($this->groups[$position]);
+        $team2 = $this->groups[$position][2];
+        unset($this->groups[$position][2]);
+        $group = array($team, $team2);
+        $this->groups[] = $group;
+    }
+
+    /**
+     * Add group to 'group' array if is full
+     * @param $group array
+     * @return bool|array
+     */
+    private function storeIfFull($group)
+    {
+        if (sizeof($group) == 3) {
+            $this->groups[] = $group;
+            return false;
+        } else if (sizeof($group) == 0) {
+            return false;
+        } else {
+            return $group;
+        }
+    }
+
+    /**
+     * Create groups by teams year
+     * @return array
+     */
+    private function createGroupsByYear()
+    {
+        $year1 = $year2 = $year3 = $year4 = array();
+
+        /* @var $team \AppBundle\Entity\Team */
+        foreach ($this->teams as $team) {
+            switch ($this->getTeamYear($team)) {
+                case 1:
+                    $year1[] = $team;
+                    break;
+                case 2:
+                    $year2[] = $team;
+                    break;
+                case 3:
+                    $year3[] = $team;
+                    break;
+                case 4:
+                    $year4[] = $team;
+            }
+        }
+
+        return array($year1, $year2, $year3, $year4);
+    }
+}

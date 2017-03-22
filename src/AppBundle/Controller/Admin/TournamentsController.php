@@ -17,9 +17,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Form\TournamentType;
 
+/**
+ * Class TournamentsController
+ * @package AppBundle\Controller\Admin
+ */
 class TournamentsController extends Controller
 {
     /**
+     * Route for summary of tournaments (list)
      * @Route("/turnaje", name="tournaments")
      * @return Response
      */
@@ -31,6 +36,7 @@ class TournamentsController extends Controller
     }
 
     /**
+     * Route for creating new tournament
      * @Route("/turnaje/novy", name="tournaments_new")
      * @param $request Request
      * @return Response
@@ -65,6 +71,7 @@ class TournamentsController extends Controller
     }
 
     /**
+     * On form submit
      * @param EntityManager $em
      * @param Tournament $data
      */
@@ -124,6 +131,7 @@ class TournamentsController extends Controller
     }
 
     /**
+     * Save array of entities
      * @param $data
      * @param EntityManager $em
      */
@@ -137,6 +145,7 @@ class TournamentsController extends Controller
     }
 
     /**
+     * Route for detail of tournament
      * @Route("/turnaje/{id}-{name}", name="tournaments_detail")
      * @param $id
      * @param $name

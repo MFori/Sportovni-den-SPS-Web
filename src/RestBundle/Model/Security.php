@@ -9,10 +9,24 @@
 
 namespace RestBundle\Model;
 
+/**
+ * Class Security
+ * @package RestBundle\Model
+ */
 class Security
 {
+    /**
+     * Key
+     * @var string
+     */
     private static $KEY = "3E876E9EDCF46000";
 
+    /**
+     * Encrypt
+     * @param string $input
+     * @param string $iv
+     * @return string
+     */
     public static function encrypt($input, $iv)
     {
         $size = mcrypt_get_block_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
@@ -27,12 +41,24 @@ class Security
         return $data;
     }
 
+    /**
+     * PKCS5_PAD
+     * @param string $text
+     * @param int $blocksize
+     * @return string
+     */
     private static function pkcs5_pad($text, $blocksize)
     {
         $pad = $blocksize - (strlen($text) % $blocksize);
         return $text . str_repeat(chr($pad), $pad);
     }
 
+    /**
+     * Decrypt
+     * @param string $sStr
+     * @param string $iv
+     * @return string
+     */
     public static function decrypt($sStr, $iv)
     {
         $decrypted = mcrypt_decrypt(

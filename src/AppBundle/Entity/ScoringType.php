@@ -24,6 +24,7 @@ define('TYPE_INDIVIDUALS', 4);
 class ScoringType
 {
     /**
+     * Id of scoring type
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -31,11 +32,13 @@ class ScoringType
     private $id;
 
     /**
+     * Name of scoring type
      * @ORM\Column(type="string")
      */
     private $name;
 
     /**
+     * Scoring type description
      * @ORM\Column(type="text")
      */
     private $description;

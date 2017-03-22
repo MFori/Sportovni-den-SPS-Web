@@ -11,9 +11,14 @@ namespace RestBundle\Listener;
 use Symfony\Component\HttpKernel\Event\GetResponseForExceptionEvent;
 use RestBundle\Model\Exception\RestException;
 
+/**
+ * Class ExceptionListener
+ * @package RestBundle\Listener
+ */
 class ExceptionListener
 {
     /**
+     * On kernel exception
      * @param GetResponseForExceptionEvent $event
      */
     public function onKernelException(GetResponseForExceptionEvent $event)

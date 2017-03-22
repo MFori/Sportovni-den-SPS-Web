@@ -11,25 +11,47 @@ namespace RestBundle\Model\Exception;
 use RestBundle\Model\RestResponse;
 use RestBundle\Model\ErrorManager;
 
+/**
+ * Class RestException
+ * @package RestBundle\Model\Exception
+ */
 abstract class RestException extends \Exception
 {
     /**
+     * Data for response
      * @var array
      */
     protected $data;
 
+    /**
+     * Public construct
+     * @param array $data
+     */
     public function __construct($data = array())
     {
         $this->data = $data;
     }
 
+    /**
+     * Get http code of response
+     * @return int
+     */
     protected abstract function getHttpStatusCode();
 
+    /**
+     * Get data about exception
+     * @return array
+     */
     protected abstract function getExceptionData();
 
+    /**
+     * Get array of errors to add to Rest response
+     * @return array
+     */
     protected abstract function getErrors();
 
     /**
+     * Create error instance
      * @param $errorCode
      * @param null $message
      * @param array $todo
@@ -41,6 +63,8 @@ abstract class RestException extends \Exception
     }
 
     /**
+     * Add data
+     *
      * @param $data array
      */
     public function addData($data)
@@ -49,6 +73,8 @@ abstract class RestException extends \Exception
     }
 
     /**
+     * Get json response for Rest
+     *
      * @return RestResponse
      */
     public function getResponse()

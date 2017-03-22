@@ -10,18 +10,41 @@ namespace AppBundle\Model;
 
 use RestBundle\Model\RestSerializable;
 
+/**
+ * Class SimpleGroup
+ * @package AppBundle\Model
+ */
 class SimpleGroup implements RestSerializable{
+    /**
+     * Name
+     * @var string
+     */
     protected $name;
+    /**
+     * Group
+     * @var int
+     */
     protected $group;
+    /**
+     * Core group
+     * @var bool
+     */
     private $core;
 
+    /**
+     * Def construct
+     * @param int $group
+     * @param string $name
+     */
     public function __construct($group, $name){
         $this->group = $group;
         $this->name = $name;
     }
 
     /**
-     * @return mixed
+     * Get name
+     *
+     * @return string
      */
     public function getName()
     {
@@ -29,7 +52,9 @@ class SimpleGroup implements RestSerializable{
     }
 
     /**
-     * @param mixed $name
+     * Set name
+     *
+     * @param string $name
      */
     public function setName($name)
     {
@@ -37,7 +62,9 @@ class SimpleGroup implements RestSerializable{
     }
 
     /**
-     * @return mixed
+     * Get group
+     *
+     * @return int
      */
     public function getGroup()
     {
@@ -45,7 +72,9 @@ class SimpleGroup implements RestSerializable{
     }
 
     /**
-     * @param mixed $group
+     * Set group
+     *
+     * @param int $group
      */
     public function setGroup($group)
     {
@@ -53,7 +82,9 @@ class SimpleGroup implements RestSerializable{
     }
 
     /**
-     * @return mixed
+     * Get core
+     *
+     * @return bool
      */
     public function getCore()
     {
@@ -61,7 +92,9 @@ class SimpleGroup implements RestSerializable{
     }
 
     /**
-     * @param mixed $core
+     * Set core
+     *
+     * @param bool $core
      */
     public function setCore($core)
     {

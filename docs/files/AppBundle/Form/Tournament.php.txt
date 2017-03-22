@@ -1,0 +1,96 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Martin Forejt, forejt.martin97@gmail.com
+ * Date: 19.12.2016
+ * Time: 19:02
+ */
+
+namespace AppBundle\Form;
+
+/**
+ * Class Tournament
+ * @package AppBundle\Form
+ */
+class Tournament
+{
+    /**
+     * Title
+     * @var string
+     */
+    private $title;
+    /**
+     * Teams
+     * @var array
+     */
+    private $teams = array();
+    /**
+     * Sports
+     * @var array
+     */
+    private $sports = array();
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * Get teams
+     *
+     * @return array
+     */
+    public function getTeams()
+    {
+        return $this->teams;
+    }
+
+    /**
+     * Set teams
+     *
+     * @param array $teams
+     */
+    public function setTeams($teams)
+    {
+        $this->teams = $teams;
+    }
+
+    /**
+     * Get sports
+     *
+     * @return array
+     */
+    public function getSports()
+    {
+        return $this->sports;
+    }
+
+    /**
+     * Set sports
+     *
+     * @param array $sports
+     */
+    public function setSports($sports)
+    {
+        $this->sports = array();
+
+        foreach($sports as $k => $sport) {
+            $this->sports[$k] = new Sport($sport);
+        }
+    }
+}

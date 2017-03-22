@@ -23,6 +23,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 class ResultsController extends RestController
 {
     /**
+     * Route of Rest for getting results by time
      * @Route("/results/timeline")
      * @Method("GET")
      * @return \RestBundle\Model\RestResponse
@@ -45,6 +46,7 @@ class ResultsController extends RestController
     }
 
     /**
+     * Compare time results by time
      * @param TimeResult $a
      * @param TimeResult $b
      * @return int
@@ -55,6 +57,7 @@ class ResultsController extends RestController
     }
 
     /**
+     * Route of Rest for getting complete results
      * @Route("/results/complete")
      * @Method("GET")
      * @return \RestBundle\Model\RestResponse
@@ -68,6 +71,7 @@ class ResultsController extends RestController
     }
 
     /**
+     * Route of Rest for getting result of sport
      * @Route("/results/{sport_id}", requirements={"sport_id": "\d+"})
      * @Method("GET")
      * @param int $sport_id

@@ -16,23 +16,60 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class SportType
+ * @package AppBundle\Form
+ */
 class SportType extends AbstractType
 {
+    /**
+     * Index if list of sports
+     * @var int
+     */
     private static $index = 0;
 
+    /**
+     * Teams sports
+     * @var array
+     */
     private $teamsSports = array(SPORT_FOTBAL, SPORT_NOHEJBAL, SPORT_BASKETBAL, SPORT_VOLEJBAL, SPORT_RINGO,
         SPORT_PRETAH_LANEM, SPORT_PING_PONG);
+    /**
+     * Time sports
+     * @var array
+     */
     private $timeSports = array(SPORT_FOTBAL, SPORT_BASKETBAL);
+    /**
+     * Draw sports
+     * @var array
+     */
     private $drawSports = array(SPORT_FOTBAL, SPORT_BASKETBAL);
+    /**
+     * Set Sports
+     * @var array
+     */
     private $setSports = array(SPORT_NOHEJBAL, SPORT_VOLEJBAL, SPORT_PING_PONG);
+    /**
+     * Set points sports
+     * @var array
+     */
     private $setPointsSports = array(SPORT_NOHEJBAL, SPORT_VOLEJBAL, SPORT_PING_PONG, SPORT_RINGO);
 
+    /**
+     * Configure options
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array('sports' => false, 'scoring_types' => array()));
         parent::configureOptions($resolver);
     }
 
+    /**
+     * Build form
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         /* @var $sport \AppBundle\Form\Sport */

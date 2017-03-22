@@ -24,6 +24,7 @@ class Addressee implements RestSerializable
     const ATHLETES = 3;
 
     /**
+     * Id of addressee
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -31,22 +32,26 @@ class Addressee implements RestSerializable
     private $id;
 
     /**
+     * Name of addressee
      * @ORM\Column(type="string")
      */
     private $name;
 
     /**
+     * If addressee represents a team, id of the team
      * @ORM\Column(type="integer", name="team")
      */
     private $team_id;
 
     /**
+     * If addressee represents a team, teams object
      * @ORM\OneToOne(targetEntity="Team")
      * @ORM\JoinColumn(name="team", referencedColumnName="id")
      */
     private $team;
 
     /**
+     * Topic name for fcm
      * @ORM\Column(type="string")
      */
     private $topic;

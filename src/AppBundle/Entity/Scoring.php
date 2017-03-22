@@ -19,71 +19,84 @@ use Doctrine\ORM\Mapping as ORM;
 class Scoring
 {
     /**
+     * Id of tournament
      * @ORM\Column(type="integer", name="tournament")
      * @ORM\Id
      */
     private $tournament_id;
 
     /**
+     * Tournament object
      * @ORM\ManyToOne(targetEntity="Tournament")
      * @ORM\JoinColumn(name="tournament", referencedColumnName="id")
      */
     private $tournament;
 
     /**
+     * Id of sport
      * @ORM\Id
      * @ORM\Column(type="integer", name="sport")
      */
     private $sport_id;
 
     /**
+     * Sport object
      * @ORM\ManyToOne(targetEntity="Sport")
      * @ORM\JoinColumn(name="sport", referencedColumnName="id")
      */
     private $sport;
 
     /**
+     * Points for win
      * @ORM\Column(type="integer")
      */
     private $win;
 
     /**
+     * Points for lose
      * @ORM\Column(type="integer")
      */
     private $lose;
 
     /**
+     * Points for draw
      * @ORM\Column(type="integer")
      */
     private $draw;
 
     /**
+     * Id of scoring type
      * @ORM\Column(type="integer", name="type")
      */
     private $type_id;
 
     /**
+     * Scoring type object
      * @ORM\ManyToOne(targetEntity="ScoringType")
      * @ORM\JoinColumn(name="type", referencedColumnName="id")
      */
     private $type;
 
     /**
+     * Points for forfeit
      * @ORM\Column(type="integer")
      */
     private $forfeit;
 
     /**
+     * Number of sets
      * @ORM\Column(type="integer")
      */
     private $sets;
 
     /**
+     * Points for each set
      * @ORM\Column(type="integer", name="set_points")
      */
     private $setPoints;
 
     /**
+     * Time of match
      * @ORM\Column(type="integer")
      */
     private $time;
@@ -257,6 +270,8 @@ class Scoring
     }
 
     /**
+     * Get sets
+     *
      * @return mixed
      */
     public function getSets()
@@ -265,6 +280,8 @@ class Scoring
     }
 
     /**
+     * Set sets
+     *
      * @param mixed $sets
      */
     public function setSets($sets)
@@ -273,6 +290,8 @@ class Scoring
     }
 
     /**
+     * Get set points
+     *
      * @return mixed
      */
     public function getSetPoints()
@@ -281,6 +300,7 @@ class Scoring
     }
 
     /**
+     * Set set points
      * @param mixed $setPoints
      */
     public function setSetPoints($setPoints)

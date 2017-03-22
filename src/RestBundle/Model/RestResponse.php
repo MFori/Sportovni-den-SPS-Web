@@ -10,8 +10,18 @@ namespace RestBundle\Model;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 
+/**
+ * Class RestResponse
+ * @package RestBundle\Model
+ */
 class RestResponse extends JsonResponse
 {
+    /**
+     * Default construct
+     * @param array $data
+     * @param int $httpStatus
+     * @param array $errors
+     */
     public function __construct($data = array(), $httpStatus = 200, $errors = array())
     {
         $data = $this->dataToArray($data);
@@ -24,6 +34,12 @@ class RestResponse extends JsonResponse
         ), $httpStatus);
     }
 
+    /**
+     * Set data
+     * @param array $data
+     * @return $this
+     * @throws \Exception
+     */
     public function setData($data = array())
     {
         return parent::setData($this->dataToArray($data));

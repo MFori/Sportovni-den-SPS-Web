@@ -8,6 +8,10 @@
 
 namespace AppBundle\Model;
 
+/**
+ * Class RobinGenerator
+ * @package AppBundle\Model
+ */
 class RobinGenerator extends MatchesGenerator
 {
     /**

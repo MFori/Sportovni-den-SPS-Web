@@ -8,9 +8,16 @@
 
 namespace AppBundle\Model;
 
-
+/**
+ * Class FinaleGenerator
+ * @package AppBundle\Model
+ */
 class FinaleGenerator extends MatchesGenerator
 {
+    /**
+     * Groups
+     * @var array
+     */
     protected $groups;
 
     /**
@@ -113,6 +120,7 @@ class FinaleGenerator extends MatchesGenerator
     }
 
     /**
+     * Split group when generating
      * @param $team
      */
     private function splitGroups($team)

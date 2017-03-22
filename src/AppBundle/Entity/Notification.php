@@ -20,6 +20,7 @@ use RestBundle\Model\RestSerializable;
 class Notification implements RestSerializable
 {
     /**
+     * Id of notification
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -27,32 +28,38 @@ class Notification implements RestSerializable
     private $id;
 
     /**
+     * Notifications title
      * @ORM\Column(type="string")
      */
     private $title;
 
     /**
+     * Notifications text - body
      * @ORM\Column(type="text")
      */
     private $text;
 
     /**
+     * Id of notifications addressee
      * @ORM\Column(type="integer", name="addressee")
      */
     private $addressee_id;
 
     /**
+     * Addressee object
      * @ORM\ManyToOne(targetEntity="Addressee")
      * @ORM\JoinColumn(name="addressee", referencedColumnName="id")
      */
     private $addressee;
 
     /**
+     * Id of notifications sender
      * @ORM\Column(type="integer", name="sender")
      */
     private $sender_id;
 
     /**
+     * Sender object
      * @var User
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumn(name="sender", referencedColumnName="id")
@@ -60,6 +67,7 @@ class Notification implements RestSerializable
     private $sender;
 
     /**
+     * Date of sending notification
      * @ORM\Column(type="datetime")
      */
     private $date;

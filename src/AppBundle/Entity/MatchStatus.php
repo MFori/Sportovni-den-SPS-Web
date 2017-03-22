@@ -11,7 +11,16 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use RestBundle\Model\RestSerializable;
 
+/**
+ * Match status represent start of match without any result
+ * @var string
+ */
 define('STATUS_CREATED', 'STATUS_CREATED');
+
+/**
+ * Match status represent end of match
+ * @var string
+ */
 define('STATUS_END', 'STATUS_END');
 
 /**
@@ -23,6 +32,7 @@ define('STATUS_END', 'STATUS_END');
 class MatchStatus implements RestSerializable
 {
     /**
+     * Id of status
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -30,6 +40,7 @@ class MatchStatus implements RestSerializable
     private $id;
 
     /**
+     * Name of status
      * @ORM\Column(type="string")
      */
     private $name;
@@ -68,6 +79,11 @@ class MatchStatus implements RestSerializable
         return $this->name;
     }
 
+    /**
+     * Has status
+     * @param $status
+     * @return bool
+     */
     public function hasStatus($status)
     {
         return in_array($status, explode(';', $this->name));

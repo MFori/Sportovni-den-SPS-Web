@@ -11,30 +11,40 @@ namespace AppBundle\Model\Results;
 use AppBundle\Entity\Team;
 use RestBundle\Model\RestSerializable;
 
+/**
+ * Class TableLine
+ * @package AppBundle\Model\Results
+ */
 class TableLine implements RestSerializable
 {
     /**
+     * Team
      * @var Team
      */
     private $team;
     /**
+     * Points
      * @var int
      */
     private $points = 0;
     /**
+     * Position
      * @var int
      */
     private $position;
     /**
+     * Sport points
      * @var int
      */
     private $sportPoints;
     /**
+     * Matches count
      * @var int
      */
     private $matchesCount = 0;
 
     /**
+     * Get team
      * @return Team
      */
     public function getTeam()
@@ -43,6 +53,7 @@ class TableLine implements RestSerializable
     }
 
     /**
+     * Set team
      * @param Team $team
      */
     public function setTeam($team)
@@ -51,6 +62,7 @@ class TableLine implements RestSerializable
     }
 
     /**
+     * Get points
      * @return int
      */
     public function getPoints()
@@ -59,6 +71,7 @@ class TableLine implements RestSerializable
     }
 
     /**
+     * Set points
      * @param int $points
      */
     public function setPoints($points)
@@ -66,6 +79,10 @@ class TableLine implements RestSerializable
         $this->points = $points;
     }
 
+    /**
+     * Add points
+     * @param int $points
+     */
     public function addPoints($points)
     {
         $this->points += $points;
@@ -73,6 +90,7 @@ class TableLine implements RestSerializable
     }
 
     /**
+     * Get points
      * @return int
      */
     public function getPosition()
@@ -81,6 +99,7 @@ class TableLine implements RestSerializable
     }
 
     /**
+     * Set position
      * @param int $position
      */
     public function setPosition($position)
@@ -89,6 +108,7 @@ class TableLine implements RestSerializable
     }
 
     /**
+     * Get sport points
      * @return int
      */
     public function getSportPoints()
@@ -97,6 +117,7 @@ class TableLine implements RestSerializable
     }
 
     /**
+     * Set sport points
      * @param int $sportPoints
      */
     public function setSportPoints($sportPoints)
@@ -105,6 +126,7 @@ class TableLine implements RestSerializable
     }
 
     /**
+     * Get matches count
      * @return int
      */
     public function getMatchesCount()
@@ -113,6 +135,7 @@ class TableLine implements RestSerializable
     }
 
     /**
+     * Set matches count
      * @param int $matchesCount
      */
     public function setMatchesCount($matchesCount)

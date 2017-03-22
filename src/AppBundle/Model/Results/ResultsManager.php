@@ -16,23 +16,35 @@ use AppBundle\Entity\Team;
 use AppBundle\Entity\Tournament;
 use Doctrine\Common\Persistence\ObjectManager;
 
+/**
+ * Class ResultsManager
+ * @package AppBundle\Model\Results
+ */
 class ResultsManager
 {
     /**
+     * Instance
      * @var ResultsManager
      */
     private static $instance = null;
 
     /**
+     * Entity manager
      * @var ObjectManager
      */
     private $em;
 
     /**
+     * Tournament
      * @var Tournament
      */
     private $tournament;
 
+    /**
+     * Private construct
+     * @param ObjectManager $em
+     * @param Tournament $tournament
+     */
     private function __construct(ObjectManager $em, Tournament $tournament)
     {
         $this->em = $em;
@@ -40,6 +52,7 @@ class ResultsManager
     }
 
     /**
+     * Get instance of singleton
      * @param ObjectManager|null $em
      * @param Tournament|null $tournament
      * @return ResultsManager
@@ -58,6 +71,10 @@ class ResultsManager
         return self::$instance;
     }
 
+    /**
+     * Get complete results
+     * @return array
+     */
     public function getCompleteResults()
     {
         $teams = $this->getTeamsArray();
@@ -120,6 +137,7 @@ class ResultsManager
     }
 
     /**
+     * Get sport results
      * @param Sport $sport
      * @return null|array
      */
@@ -140,6 +158,7 @@ class ResultsManager
     }
 
     /**
+     * Get individuals table
      * @param Sport $sport
      * @return Table
      */
@@ -174,6 +193,7 @@ class ResultsManager
     }
 
     /**
+     * Get robin table
      * @param Sport $sport
      * @param Scoring $scoring
      * @param Group $group
@@ -229,6 +249,7 @@ class ResultsManager
     }
 
     /**
+     * Get group data
      * @param Sport $sport
      * @param Scoring $scoring
      * @return array
@@ -249,6 +270,7 @@ class ResultsManager
     }
 
     /**
+     * Get teams array
      * @return Team[]
      */
     private function getTeamsArray()
@@ -264,6 +286,7 @@ class ResultsManager
     }
 
     /**
+     * Preupdate
      * @param Sport $sport
      * @return Group[]
      */
@@ -276,6 +299,7 @@ class ResultsManager
     }
 
     /**
+     * Update
      * @param Sport $sport
      * @param $previous Group[]
      */
@@ -313,6 +337,7 @@ class ResultsManager
     }
 
     /**
+     * Add group to finales
      * @param Group $group
      * @param $finales Group[]
      * @param $previousGroup Group
@@ -356,6 +381,7 @@ class ResultsManager
     }
 
     /**
+     * Remove group from finales
      * @param Group $group
      * @param $finales Group[]
      */
@@ -378,6 +404,7 @@ class ResultsManager
     }
 
     /**
+     * Get finale group index
      * @param $position
      * @param $finaleGroups
      * @return int|null
@@ -391,6 +418,7 @@ class ResultsManager
     }
 
     /**
+     * Is team in group?
      * @param Group $group
      * @param Team $team
      * @return bool
@@ -404,6 +432,7 @@ class ResultsManager
     }
 
     /**
+     * Get scoring
      * @param Sport $sport
      * @return Scoring
      */
@@ -416,6 +445,7 @@ class ResultsManager
     }
 
     /**
+     * Get groups
      * @param $matches Match[]
      * @return Group[]
      */
@@ -466,6 +496,7 @@ class ResultsManager
     }
 
     /**
+     * Groups to One table
      * @param $groups Group[]
      * @param $scoring Scoring
      * @return Table
@@ -485,6 +516,7 @@ class ResultsManager
     }
 
     /**
+     * Finale groups to one table
      * @param $groups Group[]
      * @param $teams Team []
      * @return Table
@@ -542,6 +574,7 @@ class ResultsManager
     }
 
     /**
+     * Compare matches
      * @param Match $a
      * @param Match $b
      * @return int
@@ -553,6 +586,7 @@ class ResultsManager
     }
 
     /**
+     * Compare matches by empty
      * @param Match $a
      * @param Match $b
      * @return int
@@ -570,6 +604,7 @@ class ResultsManager
     }
 
     /**
+     * Compare groups
      * @param Group $a
      * @param Group $b
      * @return int
@@ -580,6 +615,7 @@ class ResultsManager
     }
 
     /**
+     * Compare groups by priority
      * @param Group $a
      * @param Group $b
      * @return int
@@ -590,6 +626,7 @@ class ResultsManager
     }
 
     /**
+     * Compare complete
      * @param $a
      * @param $b
      * @return int

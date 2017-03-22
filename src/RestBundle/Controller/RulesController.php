@@ -20,6 +20,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 class RulesController extends RestController
 {
     /**
+     * Route of Rest for getting rules for sport(s)
      * @Route("/rules/{sport}", defaults={"sport": null})
      * @Method("GET")
      * @param null|int $sport

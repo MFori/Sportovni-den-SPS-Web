@@ -10,14 +10,40 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\User;
 
+/**
+ * Class Referee
+ * @package AppBundle\Form
+ */
 class Referee extends User
 {
+    /**
+     * Generate
+     * @var bool
+     */
     private $generate = true;
+
+    /**
+     * Send
+     * @var bool
+     */
     private $send = true;
+
+    /**
+     * Admin
+     * @var bool
+     */
     private $admin = false;
 
+    /**
+     * New
+     * @var bool
+     */
     private $new;
 
+    /**
+     * Default construct
+     * @param User|null $user
+     */
     public function __construct(User $user = null) {
         if($user != null) {
             $this->setEmail($user->getEmail());
@@ -29,7 +55,8 @@ class Referee extends User
     }
 
     /**
-     * @return mixed
+     * Get generate
+     * @return bool
      */
     public function getGenerate()
     {
@@ -37,7 +64,8 @@ class Referee extends User
     }
 
     /**
-     * @param mixed $generate
+     * Set generate
+     * @param bool $generate
      */
     public function setGenerate($generate)
     {
@@ -45,7 +73,8 @@ class Referee extends User
     }
 
     /**
-     * @return mixed
+     * Get send
+     * @return bool
      */
     public function getSend()
     {
@@ -53,7 +82,8 @@ class Referee extends User
     }
 
     /**
-     * @param mixed $send
+     * Set send
+     * @param bool $send
      */
     public function setSend($send)
     {
@@ -61,7 +91,8 @@ class Referee extends User
     }
 
     /**
-     * @return mixed
+     * Get admin
+     * @return bool
      */
     public function getAdmin()
     {
@@ -69,7 +100,8 @@ class Referee extends User
     }
 
     /**
-     * @param mixed $admin
+     * Set admin
+     * @param bool $admin
      */
     public function setAdmin($admin)
     {
@@ -77,7 +109,8 @@ class Referee extends User
     }
 
     /**
-     * @return mixed
+     * Get new
+     * @return bool
      */
     public function getNew()
     {

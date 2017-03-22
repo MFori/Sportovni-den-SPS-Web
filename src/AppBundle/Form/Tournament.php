@@ -8,19 +8,32 @@
 
 namespace AppBundle\Form;
 
+/**
+ * Class Tournament
+ * @package AppBundle\Form
+ */
 class Tournament
 {
+    /**
+     * Title
+     * @var string
+     */
     private $title;
-    private $teams = array();/*
-        'A1' => false, 'B1' => false, 'C1' => false,
-        'A2' => false, 'B2' => false, 'C2' => false,
-        'A3' => false, 'B3' => false, 'C3' => false,
-        'A4' => false, 'B4' => false, 'C4' => false,
-        );*/
+    /**
+     * Teams
+     * @var array
+     */
+    private $teams = array();
+    /**
+     * Sports
+     * @var array
+     */
     private $sports = array();
 
     /**
-     * @return mixed
+     * Get title
+     *
+     * @return string
      */
     public function getTitle()
     {
@@ -28,7 +41,9 @@ class Tournament
     }
 
     /**
-     * @param mixed $title
+     * Set title
+     *
+     * @param string $title
      */
     public function setTitle($title)
     {
@@ -36,6 +51,8 @@ class Tournament
     }
 
     /**
+     * Get teams
+     *
      * @return array
      */
     public function getTeams()
@@ -44,6 +61,8 @@ class Tournament
     }
 
     /**
+     * Set teams
+     *
      * @param array $teams
      */
     public function setTeams($teams)
@@ -52,6 +71,8 @@ class Tournament
     }
 
     /**
+     * Get sports
+     *
      * @return array
      */
     public function getSports()
@@ -60,6 +81,8 @@ class Tournament
     }
 
     /**
+     * Set sports
+     *
      * @param array $sports
      */
     public function setSports($sports)
