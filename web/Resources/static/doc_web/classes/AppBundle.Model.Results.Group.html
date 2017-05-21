@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/AppBundle.html">\AppBundle</a></li>
+                                                        <li><a href="../namespaces/RestBundle.html">\RestBundle</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1633519691"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1633519691" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-347996113"></a>
+                                <a href="../namespaces/AppBundle.html" style="margin-left: 30px; padding-left: 0">AppBundle</a>
+            </div>
+            <div id="namespace-347996113" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1800823668"></a>
+                                <a href="../namespaces/AppBundle.Controller.html" style="margin-left: 30px; padding-left: 0">Controller</a>
+            </div>
+            <div id="namespace-1800823668" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-644873467"></a>
+                                <a href="../namespaces/AppBundle.Controller.Admin.html" style="margin-left: 30px; padding-left: 0">Admin</a>
+            </div>
+            <div id="namespace-644873467" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/AppBundle.Controller.Admin.NotificationsController.html">NotificationsController</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Controller.Admin.RefereesController.html">RefereesController</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Controller.Admin.TournamentsController.html">TournamentsController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1281926736"></a>
+                                <a href="../namespaces/AppBundle.Controller.Referee.html" style="margin-left: 30px; padding-left: 0">Referee</a>
+            </div>
+            <div id="namespace-1281926736" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/AppBundle.Controller.Referee.NotificationsController.html">NotificationsController</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Controller.Referee.RulesController.html">RulesController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/AppBundle.Controller.MainController.html">MainController</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Controller.SecurityController.html">SecurityController</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Controller.SettingsController.html">SettingsController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1524014680"></a>
+                                <a href="../namespaces/AppBundle.Entity.html" style="margin-left: 30px; padding-left: 0">Entity</a>
+            </div>
+            <div id="namespace-1524014680" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/AppBundle.Entity.Addressee.html">Addressee</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.Match.html">Match</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.MatchStatus.html">MatchStatus</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.Notification.html">Notification</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.Performance.html">Performance</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.Rules.html">Rules</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.Scoring.html">Scoring</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.ScoringType.html">ScoringType</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.Sport.html">Sport</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.Team.html">Team</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.Tournament.html">Tournament</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.User.html">User</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1735573721"></a>
+                                <a href="../namespaces/AppBundle.Form.html" style="margin-left: 30px; padding-left: 0">Form</a>
+            </div>
+            <div id="namespace-1735573721" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/AppBundle.Form.Referee.html">Referee</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Form.Sport.html">Sport</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Form.SportType.html">SportType</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Form.TeamType.html">TeamType</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Form.Tournament.html">Tournament</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Form.TournamentType.html">TournamentType</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Form.UserType.html">UserType</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-652269417"></a>
+                                <a href="../namespaces/AppBundle.Model.html" style="margin-left: 30px; padding-left: 0">Model</a>
+            </div>
+            <div id="namespace-652269417" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-779302422"></a>
+                                <a href="../namespaces/AppBundle.Model.Results.html" style="margin-left: 30px; padding-left: 0">Results</a>
+            </div>
+            <div id="namespace-779302422" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/AppBundle.Model.Results.TimeResult.html">TimeResult</a></li>
+                                                                                                    <li class="class"><a href="../classes/AppBundle.Model.Results.Group.html">Group</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.Results.ResultsManager.html">ResultsManager</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.Results.Table.html">Table</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.Results.TableLine.html">TableLine</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/AppBundle.Model.DateUtils.html">DateUtils</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.FinaleGenerator.html">FinaleGenerator</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.GroupGenerator.html">GroupGenerator</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.MatchesGenerator.html">MatchesGenerator</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.NotificationsManager.html">NotificationsManager</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.RobinGenerator.html">RobinGenerator</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.SimpleGroup.html">SimpleGroup</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.TournamentBuilder.html">TournamentBuilder</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/AppBundle.AppBundle.html">AppBundle</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-203428539"></a>
+                                <a href="../namespaces/RestBundle.html" style="margin-left: 30px; padding-left: 0">RestBundle</a>
+            </div>
+            <div id="namespace-203428539" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1026181211"></a>
+                                <a href="../namespaces/RestBundle.Controller.html" style="margin-left: 30px; padding-left: 0">Controller</a>
+            </div>
+            <div id="namespace-1026181211" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RestBundle.Controller.MatchesController.html">MatchesController</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Controller.NotificationsController.html">NotificationsController</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Controller.PerformancesController.html">PerformancesController</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Controller.RestController.html">RestController</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Controller.ResultsController.html">ResultsController</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Controller.RulesController.html">RulesController</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Controller.SecurityController.html">SecurityController</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Controller.SportsController.html">SportsController</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Controller.TeamsController.html">TeamsController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2035984411"></a>
+                                <a href="../namespaces/RestBundle.Listener.html" style="margin-left: 30px; padding-left: 0">Listener</a>
+            </div>
+            <div id="namespace-2035984411" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RestBundle.Listener.ExceptionListener.html">ExceptionListener</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-282805050"></a>
+                                <a href="../namespaces/RestBundle.Model.html" style="margin-left: 30px; padding-left: 0">Model</a>
+            </div>
+            <div id="namespace-282805050" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-574694823"></a>
+                                <a href="../namespaces/RestBundle.Model.Exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-574694823" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RestBundle.Model.Exception.BadRequestException.html">BadRequestException</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Model.Exception.NotFoundException.html">NotFoundException</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Model.Exception.OutOfDateException.html">OutOfDateException</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Model.Exception.RestException.html">RestException</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Model.Exception.UnauthorizedException.html">UnauthorizedException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/RestBundle.Model.RestSerializable.html">RestSerializable</a></li>
+                                                                                                    <li class="class"><a href="../classes/RestBundle.Model.Error.html">Error</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Model.ErrorManager.html">ErrorManager</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Model.RestResponse.html">RestResponse</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Model.Security.html">Security</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RestBundle.RestBundle.html">RestBundle</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/AppBundle.Model.Results.html">\AppBundle\Model\Results</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\AppBundle\Model\Results</small>Group</h1>
+                    <p><em>Class Group</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/AppBundle.Model.Results.Group.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/AppBundle.Model.SimpleGroup.html#method_getName" class="">getName()</a><br />
+                                                                    <a href="../classes/AppBundle.Model.SimpleGroup.html#method_setName" class="">setName()</a><br />
+                                                                    <a href="../classes/AppBundle.Model.SimpleGroup.html#method_getGroup" class="">getGroup()</a><br />
+                                                                    <a href="../classes/AppBundle.Model.SimpleGroup.html#method_setGroup" class="">setGroup()</a><br />
+                                                                    <a href="../classes/AppBundle.Model.SimpleGroup.html#method_getCore" class="">getCore()</a><br />
+                                                                    <a href="../classes/AppBundle.Model.SimpleGroup.html#method_setCore" class="">setCore()</a><br />
+                                                                    <a href="../classes/AppBundle.Model.Results.Group.html#method_restSerialize" class="">restSerialize()</a><br />
+                                                                    <a href="../classes/AppBundle.Model.Results.Group.html#method_getTeams" class="">getTeams()</a><br />
+                                                                    <a href="../classes/AppBundle.Model.Results.Group.html#method_setTeams" class="">setTeams()</a><br />
+                                                                    <a href="../classes/AppBundle.Model.Results.Group.html#method_addTeam" class="">addTeam()</a><br />
+                                                                    <a href="../classes/AppBundle.Model.Results.Group.html#method_getTable" class="">getTable()</a><br />
+                                                                    <a href="../classes/AppBundle.Model.Results.Group.html#method_setTable" class="">setTable()</a><br />
+                                                                    <a href="../classes/AppBundle.Model.Results.Group.html#method_getMatches" class="">getMatches()</a><br />
+                                                                    <a href="../classes/AppBundle.Model.Results.Group.html#method_setMatches" class="">setMatches()</a><br />
+                                                                    <a href="../classes/AppBundle.Model.Results.Group.html#method_addMatch" class="">addMatch()</a><br />
+                                                                    <a href="../classes/AppBundle.Model.Results.Group.html#method_getTeamsCountToMatches" class="">getTeamsCountToMatches()</a><br />
+                                                                    <a href="../classes/AppBundle.Model.Results.Group.html#method_isComplete" class="">isComplete()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/AppBundle.Model.SimpleGroup.html#property_name" class="">$name</a><br />
+                                                                    <a href="../classes/AppBundle.Model.SimpleGroup.html#property_group" class="">$group</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/AppBundle.Model.SimpleGroup.html#property_core" class="">$core</a><br />
+                                                                    <a href="../classes/AppBundle.Model.Results.Group.html#property_teams" class="">$teams</a><br />
+                                                                    <a href="../classes/AppBundle.Model.Results.Group.html#property_table" class="">$table</a><br />
+                                                                    <a href="../classes/AppBundle.Model.Results.Group.html#property_matches" class="">$matches</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/AppBundle.Model.Results.Group.html"><div class="path-wrapper">AppBundle\Model\Results\Group.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Model\Results</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                
+                                        <div class="namespace-wrapper"><a href="../classes/AppBundle.Model.SimpleGroup.html">\AppBundle\Model\SimpleGroup</a></div>
+                                                                                                    <div class="namespace-wrapper">\AppBundle\Model\Results\Group</div>
+                            </dd>
+
+                                                                            <dt>Implements</dt>
+                                                        <dd><a href="../classes/RestBundle.Model.RestSerializable.html"><div class="namespace-wrapper">\RestBundle\Model\RestSerializable</div></a></dd>
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_name" name="property_name" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$name</h3>
+                <pre class="signature">$name : string</pre>
+                <p><em>Name</em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/AppBundle.Model.SimpleGroup.html"><div class="path-wrapper">\AppBundle\Model\SimpleGroup</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_group" name="property_group" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$group</h3>
+                <pre class="signature">$group : integer</pre>
+                <p><em>Group</em></p>
+                
+
+                                <h4>Type</h4>
+                integer
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/AppBundle.Model.SimpleGroup.html"><div class="path-wrapper">\AppBundle\Model\SimpleGroup</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_core" name="property_core" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$core</h3>
+                <pre class="signature">$core : boolean</pre>
+                <p><em>Core group</em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/AppBundle.Model.SimpleGroup.html"><div class="path-wrapper">\AppBundle\Model\SimpleGroup</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_teams" name="property_teams" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$teams</h3>
+                <pre class="signature">$teams : array&lt;mixed,\AppBundle\Entity\Team&gt;</pre>
+                <p><em>Teams</em></p>
+                
+
+                                <h4>Type</h4>
+                array&lt;mixed,<a href="../classes/AppBundle.Entity.Team.html">\AppBundle\Entity\Team</a>&gt;
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_table" name="property_table" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$table</h3>
+                <pre class="signature">$table : \AppBundle\Model\Results\Table</pre>
+                <p><em>Table</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/AppBundle.Model.Results.Table.html">\AppBundle\Model\Results\Table</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_matches" name="property_matches" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$matches</h3>
+                <pre class="signature">$matches : array&lt;mixed,\AppBundle\Entity\Match&gt;</pre>
+                <p><em>Matches</em></p>
+                
+
+                                <h4>Type</h4>
+                array&lt;mixed,<a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>&gt;
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(string  <span class="argument">$group = &#039;&#039;</span>) </pre>
+                <p><em>Default construct</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$group </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getName" name="method_getName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getName() : string</pre>
+                <p><em>Get name</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    string
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/AppBundle.Model.SimpleGroup.html"><div class="path-wrapper">\AppBundle\Model\SimpleGroup</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setName" name="method_setName" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setName()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setName(string  <span class="argument">$name</span>) </pre>
+                <p><em>Set name</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>string</td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/AppBundle.Model.SimpleGroup.html"><div class="path-wrapper">\AppBundle\Model\SimpleGroup</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getGroup" name="method_getGroup" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getGroup()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getGroup() : integer</pre>
+                <p><em>Get group</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/AppBundle.Model.SimpleGroup.html"><div class="path-wrapper">\AppBundle\Model\SimpleGroup</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setGroup" name="method_setGroup" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setGroup()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setGroup(integer  <span class="argument">$group</span>) </pre>
+                <p><em>Set group</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$group </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/AppBundle.Model.SimpleGroup.html"><div class="path-wrapper">\AppBundle\Model\SimpleGroup</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCore" name="method_getCore" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCore()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCore() : boolean</pre>
+                <p><em>Get core</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/AppBundle.Model.SimpleGroup.html"><div class="path-wrapper">\AppBundle\Model\SimpleGroup</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setCore" name="method_setCore" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setCore()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setCore(boolean  <span class="argument">$core</span>) </pre>
+                <p><em>Set core</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$core </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/AppBundle.Model.SimpleGroup.html"><div class="path-wrapper">\AppBundle\Model\SimpleGroup</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_restSerialize" name="method_restSerialize" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">restSerialize()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">restSerialize() : array</pre>
+                <p><em>Serialize object for rest api</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>of data for json serializing</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTeams" name="method_getTeams" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTeams()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTeams() : array&lt;mixed,\AppBundle\Entity\Team&gt;</pre>
+                <p><em>Get teams</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array&lt;mixed,<a href="../classes/AppBundle.Entity.Team.html">\AppBundle\Entity\Team</a>&gt;
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setTeams" name="method_setTeams" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setTeams()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setTeams(array&lt;mixed,\AppBundle\Entity\Team&gt;  <span class="argument">$teams</span>) </pre>
+                <p><em>Set teams</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array&lt;mixed,<a href="../classes/AppBundle.Entity.Team.html">\AppBundle\Entity\Team</a>&gt;</td>
+                                <td>$teams </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addTeam" name="method_addTeam" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addTeam()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addTeam(\AppBundle\Entity\Team  <span class="argument">$team</span>) </pre>
+                <p><em>Add team</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/AppBundle.Entity.Team.html">\AppBundle\Entity\Team</a></td>
+                                <td>$team </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTable" name="method_getTable" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTable()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTable() : \AppBundle\Model\Results\Table</pre>
+                <p><em>Get table</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Model.Results.Table.html">\AppBundle\Model\Results\Table</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setTable" name="method_setTable" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setTable()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setTable(\AppBundle\Model\Results\Table  <span class="argument">$table</span>) </pre>
+                <p><em>Set table</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/AppBundle.Model.Results.Table.html">\AppBundle\Model\Results\Table</a></td>
+                                <td>$table </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getMatches" name="method_getMatches" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getMatches()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getMatches() : array&lt;mixed,\AppBundle\Entity\Match&gt;</pre>
+                <p><em>Get matches</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array&lt;mixed,<a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>&gt;
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setMatches" name="method_setMatches" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setMatches()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setMatches(array&lt;mixed,\AppBundle\Entity\Match&gt;  <span class="argument">$matches</span>) </pre>
+                <p><em>Set matches</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array&lt;mixed,<a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>&gt;</td>
+                                <td>$matches </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_addMatch" name="method_addMatch" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">addMatch()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">addMatch(\AppBundle\Entity\Match  <span class="argument">$match</span>) </pre>
+                <p><em>Add match</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a></td>
+                                <td>$match </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTeamsCountToMatches" name="method_getTeamsCountToMatches" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTeamsCountToMatches()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTeamsCountToMatches() : float</pre>
+                <p><em>Get Teams count to matches</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    float
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_isComplete" name="method_isComplete" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">isComplete()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">isComplete() : boolean</pre>
+                <p><em>Is group complete</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Group.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/AppBundle\Model\Results\Group.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/AppBundle.html">\AppBundle</a></li>
+                                                                            <li><a href="../namespaces/RestBundle.html">\RestBundle</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on March 22nd, 2017 at 21:18.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

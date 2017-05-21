@@ -1,0 +1,59 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Martin Forejt, forejt.martin97@gmail.com
+ * Date: 21.12.2016
+ * Time: 19:06
+ */
+
+namespace AppBundle\Model;
+
+/**
+ * Class GroupGenerator
+ * @package AppBundle\Model
+ */
+class GroupGenerator extends FinaleGenerator
+{
+    /**
+     * Create finale matches
+     * @override
+     * @return array
+     */
+    protected function createFinale()
+    {
+        $matches = array();
+
+        if (sizeof($this->groups) <= 1) return array();
+
+        $lastGroup = sizeof($this->groups);
+        for ($i = 0; $i < 3; $i++) {
+            $teams = array();
+            for ($j = 0; $j < sizeof($this->groups); $j++) {
+                if (isset($this->groups[$j][$i])) {
+                    $teams[] = $this->groups[$j][$i];
+                }
+            }
+            if((sizeof($teams) * (sizeof($teams) - 1) / 2) > 0) $lastGroup++;
+        }
+
+        for ($i = 0; $i < 3; $i++) {
+            $teams = array();
+            for ($j = 0; $j < sizeof($this->groups); $j++) {
+                if (isset($this->groups[$j][$i])) {
+                    $teams[] = $this->groups[$j][$i];
+                }
+            }
+
+            $matchesCount = sizeof($teams) * (sizeof($teams) - 1) / 2;
+            for ($j = 0; $j < $matchesCount; $j++) {
+                $m = $this->createDefault();
+                //$m->setGroup(sizeof($this->groups) + $i + 1);
+                $m->setGroup($lastGroup - ($i));
+                $m->setCoreGroup(false);
+                $matches[] = $m;
+            }
+        }
+
+        return $matches;
+    }
+}

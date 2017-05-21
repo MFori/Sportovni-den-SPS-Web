@@ -1,8 +1,11 @@
+{% spaceless %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Sportovní den{% endblock %}</title>
+        <meta name="keywords" content="Sportovní den, spš, správa turnaje">
+        <meta name="description" content="Sportovní den spš a voš Písek.">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <script type="application/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
@@ -57,6 +60,13 @@
                         </li>
                         <li><a class="menu-item" href="{{ path('settings') }}">Nastavení</a></li>
                         <li><a class="menu-item" href="{{ path('logout') }}">Odhlásit</a></li>
+                        <li id="doc-li">
+                            <div class="menu-item">Dokumentace<span class="glyphicon glyphicon-chevron-up"></span><span class="glyphicon glyphicon-chevron-down"></span></div>
+                            <div class="menu-drop">
+                                <a target="_blank" href="{{ asset('Resources/static/doc_web/index.html') }}">Web</a>
+                                <a target="_blank" href="{{ asset('Resources/static/doc_android/index.html') }}">Android</a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
 
@@ -80,3 +90,4 @@
         {% block javascripts %}{% endblock %}
     </body>
 </html>
+{% endspaceless %}

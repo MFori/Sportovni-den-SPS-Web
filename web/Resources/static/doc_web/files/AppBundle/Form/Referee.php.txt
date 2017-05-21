@@ -1,0 +1,134 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Martin Forejt, forejt.martin97@gmail.com
+ * Date: 18.12.2016
+ * Time: 18:58
+ */
+
+namespace AppBundle\Form;
+
+use AppBundle\Entity\User;
+
+/**
+ * Class Referee
+ * @package AppBundle\Form
+ */
+class Referee extends User
+{
+    /**
+     * Generate
+     * @var bool
+     */
+    private $generate = true;
+
+    /**
+     * Send
+     * @var bool
+     */
+    private $send = true;
+
+    /**
+     * Admin
+     * @var bool
+     */
+    private $admin = false;
+
+    /**
+     * New
+     * @var bool
+     */
+    private $new;
+
+    /**
+     * Default construct
+     * @param User|null $user
+     */
+    public function __construct(User $user = null) {
+        if($user != null) {
+            $this->setEmail($user->getEmail());
+            $this->setUsername($user->getUsername());
+            $this->setAdmin($user->isAdmin());
+        }
+
+        $this->new = $user == null;
+    }
+
+    /**
+     * Get generate
+     * @return bool
+     */
+    public function getGenerate()
+    {
+        return $this->generate;
+    }
+
+    /**
+     * Set generate
+     * @param bool $generate
+     */
+    public function setGenerate($generate)
+    {
+        $this->generate = $generate;
+    }
+
+    /**
+     * Get send
+     * @return bool
+     */
+    public function getSend()
+    {
+        return $this->send;
+    }
+
+    /**
+     * Set send
+     * @param bool $send
+     */
+    public function setSend($send)
+    {
+        $this->send = $send;
+    }
+
+    /**
+     * Get admin
+     * @return bool
+     */
+    public function getAdmin()
+    {
+        return $this->admin;
+    }
+
+    /**
+     * Set admin
+     * @param bool $admin
+     */
+    public function setAdmin($admin)
+    {
+        $this->admin = $admin;
+    }
+
+    /**
+     * Get new
+     * @return bool
+     */
+    public function getNew()
+    {
+        return $this->new;
+    }
+
+    /**
+     * Generate random password
+     * @return string
+     */
+    public static function randomPassword() {
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $pass = array(); //remember to declare $pass as an array
+        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        for ($i = 0; $i < 8; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        return implode($pass); //turn the array into a string
+    }
+}

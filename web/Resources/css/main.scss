@@ -18,7 +18,7 @@ $navigation_width: 190px;
 $footer_height: 40px;
 
 #wrapper {
-  min-height: 100%!important;
+  min-height: 100% !important;
   height: auto;
   position: relative;
   width: 100%;
@@ -31,9 +31,9 @@ $footer_height: 40px;
     color: #f8f8f8;
     font-size: 29px;
     padding: 8px 11px;
-    -webkit-box-shadow: 0px 4px 34px -12px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 4px 34px -12px rgba(0,0,0,0.75);
-    box-shadow: 0px 4px 34px -12px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 4px 34px -12px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 4px 34px -12px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 4px 34px -12px rgba(0, 0, 0, 0.75);
   }
 
   #navigation {
@@ -45,14 +45,16 @@ $footer_height: 40px;
     z-index: 2;
     user-select: none;
     border-right: 1px solid silver;
-    -webkit-box-shadow: 4px 0px 34px -12px rgba(0,0,0,0.75);
-    -moz-box-shadow: 4px 0px 34px -12px rgba(0,0,0,0.75);
-    box-shadow: 4px 0px 34px -12px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 4px 0px 34px -12px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 4px 0px 34px -12px rgba(0, 0, 0, 0.75);
+    box-shadow: 4px 0px 34px -12px rgba(0, 0, 0, 0.75);
 
     ul {
       padding: 0;
       margin: 0;
       list-style-type: none;
+      height: 100%;
+      position: relative;
 
       .menu-item {
         display: block;
@@ -81,6 +83,12 @@ $footer_height: 40px;
           display: block;
           padding: 3px 3px 3px 10px;
         }
+      }
+
+      #doc-li {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
       }
 
     }

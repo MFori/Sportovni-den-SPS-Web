@@ -1,0 +1,2446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="../js/html5.js"></script>
+    <![endif]-->
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/AppBundle.html">\AppBundle</a></li>
+                                                        <li><a href="../namespaces/RestBundle.html">\RestBundle</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">3</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-1793340127"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-1793340127" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2038642354"></a>
+                                <a href="../namespaces/AppBundle.html" style="margin-left: 30px; padding-left: 0">AppBundle</a>
+            </div>
+            <div id="namespace-2038642354" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-912993225"></a>
+                                <a href="../namespaces/AppBundle.Controller.html" style="margin-left: 30px; padding-left: 0">Controller</a>
+            </div>
+            <div id="namespace-912993225" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-101946713"></a>
+                                <a href="../namespaces/AppBundle.Controller.Admin.html" style="margin-left: 30px; padding-left: 0">Admin</a>
+            </div>
+            <div id="namespace-101946713" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/AppBundle.Controller.Admin.NotificationsController.html">NotificationsController</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Controller.Admin.RefereesController.html">RefereesController</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Controller.Admin.TournamentsController.html">TournamentsController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-358973150"></a>
+                                <a href="../namespaces/AppBundle.Controller.Referee.html" style="margin-left: 30px; padding-left: 0">Referee</a>
+            </div>
+            <div id="namespace-358973150" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/AppBundle.Controller.Referee.NotificationsController.html">NotificationsController</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Controller.Referee.RulesController.html">RulesController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/AppBundle.Controller.MainController.html">MainController</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Controller.SecurityController.html">SecurityController</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Controller.SettingsController.html">SettingsController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-64908688"></a>
+                                <a href="../namespaces/AppBundle.Entity.html" style="margin-left: 30px; padding-left: 0">Entity</a>
+            </div>
+            <div id="namespace-64908688" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/AppBundle.Entity.Addressee.html">Addressee</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.Match.html">Match</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.MatchStatus.html">MatchStatus</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.Notification.html">Notification</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.Performance.html">Performance</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.Rules.html">Rules</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.Scoring.html">Scoring</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.ScoringType.html">ScoringType</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.Sport.html">Sport</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.Team.html">Team</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.Tournament.html">Tournament</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Entity.User.html">User</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1533492796"></a>
+                                <a href="../namespaces/AppBundle.Form.html" style="margin-left: 30px; padding-left: 0">Form</a>
+            </div>
+            <div id="namespace-1533492796" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/AppBundle.Form.Referee.html">Referee</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Form.Sport.html">Sport</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Form.SportType.html">SportType</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Form.TeamType.html">TeamType</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Form.Tournament.html">Tournament</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Form.TournamentType.html">TournamentType</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Form.UserType.html">UserType</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-324385643"></a>
+                                <a href="../namespaces/AppBundle.Model.html" style="margin-left: 30px; padding-left: 0">Model</a>
+            </div>
+            <div id="namespace-324385643" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1230887676"></a>
+                                <a href="../namespaces/AppBundle.Model.Results.html" style="margin-left: 30px; padding-left: 0">Results</a>
+            </div>
+            <div id="namespace-1230887676" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/AppBundle.Model.Results.TimeResult.html">TimeResult</a></li>
+                                                                                                    <li class="class"><a href="../classes/AppBundle.Model.Results.Group.html">Group</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.Results.ResultsManager.html">ResultsManager</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.Results.Table.html">Table</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.Results.TableLine.html">TableLine</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/AppBundle.Model.DateUtils.html">DateUtils</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.FinaleGenerator.html">FinaleGenerator</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.GroupGenerator.html">GroupGenerator</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.MatchesGenerator.html">MatchesGenerator</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.NotificationsManager.html">NotificationsManager</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.RobinGenerator.html">RobinGenerator</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.SimpleGroup.html">SimpleGroup</a></li>
+                                                    <li class="class"><a href="../classes/AppBundle.Model.TournamentBuilder.html">TournamentBuilder</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/AppBundle.AppBundle.html">AppBundle</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-596781504"></a>
+                                <a href="../namespaces/RestBundle.html" style="margin-left: 30px; padding-left: 0">RestBundle</a>
+            </div>
+            <div id="namespace-596781504" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-877959632"></a>
+                                <a href="../namespaces/RestBundle.Controller.html" style="margin-left: 30px; padding-left: 0">Controller</a>
+            </div>
+            <div id="namespace-877959632" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RestBundle.Controller.MatchesController.html">MatchesController</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Controller.NotificationsController.html">NotificationsController</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Controller.PerformancesController.html">PerformancesController</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Controller.RestController.html">RestController</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Controller.ResultsController.html">ResultsController</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Controller.RulesController.html">RulesController</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Controller.SecurityController.html">SecurityController</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Controller.SportsController.html">SportsController</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Controller.TeamsController.html">TeamsController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1680430177"></a>
+                                <a href="../namespaces/RestBundle.Listener.html" style="margin-left: 30px; padding-left: 0">Listener</a>
+            </div>
+            <div id="namespace-1680430177" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RestBundle.Listener.ExceptionListener.html">ExceptionListener</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1279682670"></a>
+                                <a href="../namespaces/RestBundle.Model.html" style="margin-left: 30px; padding-left: 0">Model</a>
+            </div>
+            <div id="namespace-1279682670" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-734123939"></a>
+                                <a href="../namespaces/RestBundle.Model.Exception.html" style="margin-left: 30px; padding-left: 0">Exception</a>
+            </div>
+            <div id="namespace-734123939" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RestBundle.Model.Exception.BadRequestException.html">BadRequestException</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Model.Exception.NotFoundException.html">NotFoundException</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Model.Exception.OutOfDateException.html">OutOfDateException</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Model.Exception.RestException.html">RestException</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Model.Exception.UnauthorizedException.html">UnauthorizedException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                    <li class="interface"><a href="../classes/RestBundle.Model.RestSerializable.html">RestSerializable</a></li>
+                                                                                                    <li class="class"><a href="../classes/RestBundle.Model.Error.html">Error</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Model.ErrorManager.html">ErrorManager</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Model.RestResponse.html">RestResponse</a></li>
+                                                    <li class="class"><a href="../classes/RestBundle.Model.Security.html">Security</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/RestBundle.RestBundle.html">RestBundle</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/AppBundle.Entity.html">\AppBundle\Entity</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\AppBundle\Entity</small>Match</h1>
+                    <p><em>Class Match</em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_getId" class="">getId()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_setSportId" class="">setSportId()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_getSportId" class="">getSportId()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_setTournamentId" class="">setTournamentId()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_getTournamentId" class="">getTournamentId()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_setTeam1Id" class="">setTeam1Id()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_getTeam1Id" class="">getTeam1Id()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_setTeam2Id" class="">setTeam2Id()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_getTeam2Id" class="">getTeam2Id()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_setScore1" class="">setScore1()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_getScore1" class="">getScore1()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_setScore2" class="">setScore2()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_getScore2" class="">getScore2()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_setGroup" class="">setGroup()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_getGroup" class="">getGroup()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_setStatusId" class="">setStatusId()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_getStatusId" class="">getStatusId()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_setRefereeId" class="">setRefereeId()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_getRefereeId" class="">getRefereeId()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_setDate" class="">setDate()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_getDate" class="">getDate()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_setSport" class="">setSport()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_getSport" class="">getSport()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_setTournament" class="">setTournament()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_getTournament" class="">getTournament()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_setTeam1" class="">setTeam1()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_getTeam1" class="">getTeam1()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_setTeam2" class="">setTeam2()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_getTeam2" class="">getTeam2()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_setStatus" class="">setStatus()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_getStatus" class="">getStatus()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_setReferee" class="">setReferee()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_getReferee" class="">getReferee()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_restSerialize" class="">restSerialize()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_setCoreGroup" class="">setCoreGroup()</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#method_getCoreGroup" class="">getCoreGroup()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#property_id" class="">$id</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#property_sport_id" class="">$sport_id</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#property_sport" class="">$sport</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#property_tournament_id" class="">$tournament_id</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#property_tournament" class="">$tournament</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#property_team1_id" class="">$team1_id</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#property_team1" class="">$team1</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#property_team2_id" class="">$team2_id</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#property_team2" class="">$team2</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#property_score1" class="">$score1</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#property_score2" class="">$score2</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#property_group" class="">$group</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#property_coreGroup" class="">$coreGroup</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#property_status_id" class="">$status_id</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#property_status" class="">$status</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#property_referee_id" class="">$referee_id</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#property_referee" class="">$referee</a><br />
+                                                                    <a href="../classes/AppBundle.Entity.Match.html#property_date" class="">$date</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/AppBundle.Entity.Match.html"><div class="path-wrapper">AppBundle\Entity\Match.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">AppBundle\Entity</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\AppBundle\Entity\Match</div>
+                            </dd>
+
+                                                                            <dt>Implements</dt>
+                                                        <dd><a href="../classes/RestBundle.Model.RestSerializable.html"><div class="namespace-wrapper">\RestBundle\Model\RestSerializable</div></a></dd>
+                                                                                <dd><a href="../classes/AppBundle.Model.Results.TimeResult.html"><div class="namespace-wrapper">\AppBundle\Model\Results\TimeResult</div></a></dd>
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                ORM\Entity
+                            </th>
+                            <td>
+                                                                    
+                                                            </td>
+                        </tr>
+                                            <tr>
+                            <th>
+                                ORM\Table
+                            </th>
+                            <td>
+                                                                    <p>(name=&quot;<code>match</code>&quot;)</p>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_id" name="property_id" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$id</h3>
+                <pre class="signature">$id : </pre>
+                <p><em>Id of match</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(type=&quot;integer&quot;)</p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            ORM\Id
+                        </th>
+                        <td>
+                                                            
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            ORM\GeneratedValue
+                        </th>
+                        <td>
+                                                            <p>(strategy=&quot;AUTO&quot;)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_sport_id" name="property_sport_id" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$sport_id</h3>
+                <pre class="signature">$sport_id : </pre>
+                <p><em>Id of sport</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(type=&quot;integer&quot;, name=&quot;sport&quot;)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_sport" name="property_sport" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$sport</h3>
+                <pre class="signature">$sport : \AppBundle\Entity\Sport</pre>
+                <p><em>Sport object</em></p>
+                
+
+                                <h4>Type</h4>
+                <a href="../classes/AppBundle.Entity.Sport.html">\AppBundle\Entity\Sport</a>
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\ManyToOne
+                        </th>
+                        <td>
+                                                            <p>(targetEntity=&quot;Sport&quot;)</p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            ORM\JoinColumn
+                        </th>
+                        <td>
+                                                            <p>(name=&quot;sport&quot;, referencedColumnName=&quot;id&quot;)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_tournament_id" name="property_tournament_id" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$tournament_id</h3>
+                <pre class="signature">$tournament_id : </pre>
+                <p><em>Id of tournament</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(type=&quot;integer&quot;, name=&quot;tournament&quot;)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_tournament" name="property_tournament" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$tournament</h3>
+                <pre class="signature">$tournament : </pre>
+                <p><em>Tournament object</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\ManyToOne
+                        </th>
+                        <td>
+                                                            <p>(targetEntity=&quot;Tournament&quot;)</p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            ORM\JoinColumn
+                        </th>
+                        <td>
+                                                            <p>(name=&quot;tournament&quot;, referencedColumnName=&quot;id&quot;)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_team1_id" name="property_team1_id" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$team1_id</h3>
+                <pre class="signature">$team1_id : </pre>
+                <p><em>Id of team1</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(type=&quot;integer&quot;, name=&quot;team_1&quot;)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_team1" name="property_team1" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$team1</h3>
+                <pre class="signature">$team1 : </pre>
+                <p><em>Team1 object</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\ManyToOne
+                        </th>
+                        <td>
+                                                            <p>(targetEntity=&quot;Team&quot;)</p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            ORM\JoinColumn
+                        </th>
+                        <td>
+                                                            <p>(name=&quot;team_1&quot;, referencedColumnName=&quot;id&quot;)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_team2_id" name="property_team2_id" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$team2_id</h3>
+                <pre class="signature">$team2_id : </pre>
+                <p><em>Id of team2</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(type=&quot;integer&quot;, name=&quot;team_2&quot;)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_team2" name="property_team2" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$team2</h3>
+                <pre class="signature">$team2 : </pre>
+                <p><em>Team2 object</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\ManyToOne
+                        </th>
+                        <td>
+                                                            <p>(targetEntity=&quot;Team&quot;)</p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            ORM\JoinColumn
+                        </th>
+                        <td>
+                                                            <p>(name=&quot;team_2&quot;, referencedColumnName=&quot;id&quot;)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_score1" name="property_score1" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$score1</h3>
+                <pre class="signature">$score1 : </pre>
+                <p><em>Score1</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(type=&quot;integer&quot;, name=&quot;score_1&quot;)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_score2" name="property_score2" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$score2</h3>
+                <pre class="signature">$score2 : </pre>
+                <p><em>Score2</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(type=&quot;integer&quot;, name=&quot;score_2&quot;)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_group" name="property_group" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$group</h3>
+                <pre class="signature">$group : </pre>
+                <p><em>Group of match</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(type=&quot;integer&quot;, name=&quot;<code>group</code>&quot;)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_coreGroup" name="property_coreGroup" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$coreGroup</h3>
+                <pre class="signature">$coreGroup : </pre>
+                <p><em>Is group core?</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(type=&quot;boolean&quot;, name=&quot;core_group&quot;)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_status_id" name="property_status_id" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$status_id</h3>
+                <pre class="signature">$status_id : </pre>
+                <p><em>Id of match status</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(type=&quot;integer&quot;, name=&quot;status&quot;)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_status" name="property_status" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$status</h3>
+                <pre class="signature">$status : </pre>
+                <p><em>Status object</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\ManyToOne
+                        </th>
+                        <td>
+                                                            <p>(targetEntity=&quot;MatchStatus&quot;)</p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            ORM\JoinColumn
+                        </th>
+                        <td>
+                                                            <p>(name=&quot;status&quot;, referencedColumnName=&quot;id&quot;)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_referee_id" name="property_referee_id" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$referee_id</h3>
+                <pre class="signature">$referee_id : </pre>
+                <p><em>Id of referee</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(type=&quot;integer&quot;, name=&quot;referee&quot;)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_referee" name="property_referee" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$referee</h3>
+                <pre class="signature">$referee : </pre>
+                <p><em>Referee object</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\ManyToOne
+                        </th>
+                        <td>
+                                                            <p>(targetEntity=&quot;User&quot;)</p>
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            ORM\JoinColumn
+                        </th>
+                        <td>
+                                                            <p>(name=&quot;referee&quot;, referencedColumnName=&quot;id&quot;)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_date" name="property_date" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$date</h3>
+                <pre class="signature">$date : </pre>
+                <p><em>Date of last edit match</em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            ORM\Column
+                        </th>
+                        <td>
+                                                            <p>(type=&quot;datetime&quot;)</p>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getId" name="method_getId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getId() : integer</pre>
+                <p><em>Get id</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setSportId" name="method_setSportId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setSportId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setSportId(integer  <span class="argument">$sportId</span>) : \AppBundle\Entity\Match</pre>
+                <p><em>Set sportId</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$sportId </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSportId" name="method_getSportId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSportId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSportId() : integer</pre>
+                <p><em>Get sportId</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setTournamentId" name="method_setTournamentId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setTournamentId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setTournamentId(integer  <span class="argument">$tournamentId</span>) : \AppBundle\Entity\Match</pre>
+                <p><em>Set tournamentId</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$tournamentId </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTournamentId" name="method_getTournamentId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTournamentId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTournamentId() : integer</pre>
+                <p><em>Get tournamentId</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setTeam1Id" name="method_setTeam1Id" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setTeam1Id()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setTeam1Id(integer  <span class="argument">$team1Id</span>) : \AppBundle\Entity\Match</pre>
+                <p><em>Set team1Id</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$team1Id </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTeam1Id" name="method_getTeam1Id" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTeam1Id()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTeam1Id() : integer</pre>
+                <p><em>Get team1Id</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setTeam2Id" name="method_setTeam2Id" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setTeam2Id()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setTeam2Id(integer  <span class="argument">$team2Id</span>) : \AppBundle\Entity\Match</pre>
+                <p><em>Set team2Id</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$team2Id </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTeam2Id" name="method_getTeam2Id" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTeam2Id()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTeam2Id() : integer</pre>
+                <p><em>Get team2Id</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setScore1" name="method_setScore1" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setScore1()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setScore1(integer  <span class="argument">$score1</span>) : \AppBundle\Entity\Match</pre>
+                <p><em>Set score1</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$score1 </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getScore1" name="method_getScore1" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getScore1()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getScore1() : integer</pre>
+                <p><em>Get score1</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setScore2" name="method_setScore2" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setScore2()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setScore2(integer  <span class="argument">$score2</span>) : \AppBundle\Entity\Match</pre>
+                <p><em>Set score2</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$score2 </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getScore2" name="method_getScore2" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getScore2()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getScore2() : integer</pre>
+                <p><em>Get score2</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setGroup" name="method_setGroup" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setGroup()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setGroup(integer  <span class="argument">$group</span>) : \AppBundle\Entity\Match</pre>
+                <p><em>Set group</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$group </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getGroup" name="method_getGroup" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getGroup()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getGroup() : integer</pre>
+                <p><em>Get group</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setStatusId" name="method_setStatusId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setStatusId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setStatusId(integer  <span class="argument">$statusId</span>) : \AppBundle\Entity\Match</pre>
+                <p><em>Set statusId</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$statusId </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getStatusId" name="method_getStatusId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getStatusId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getStatusId() : integer</pre>
+                <p><em>Get statusId</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setRefereeId" name="method_setRefereeId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setRefereeId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setRefereeId(integer  <span class="argument">$refereeId</span>) : \AppBundle\Entity\Match</pre>
+                <p><em>Set refereeId</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>integer</td>
+                                <td>$refereeId </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getRefereeId" name="method_getRefereeId" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getRefereeId()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getRefereeId() : integer</pre>
+                <p><em>Get refereeId</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    integer
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setDate" name="method_setDate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setDate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setDate(\DateTime  <span class="argument">$date</span>) : \AppBundle\Entity\Match</pre>
+                <p><em>Set date</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\DateTime</td>
+                                <td>$date </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDate" name="method_getDate" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDate()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDate() : \DateTime</pre>
+                <p><em>Get date</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    \DateTime
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setSport" name="method_setSport" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setSport()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setSport(\AppBundle\Entity\Sport  <span class="argument">$sport = null</span>) : \AppBundle\Entity\Match</pre>
+                <p><em>Set sport</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/AppBundle.Entity.Sport.html">\AppBundle\Entity\Sport</a></td>
+                                <td>$sport </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getSport" name="method_getSport" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getSport()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getSport() : \AppBundle\Entity\Sport</pre>
+                <p><em>Get sport</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Sport.html">\AppBundle\Entity\Sport</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setTournament" name="method_setTournament" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setTournament()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setTournament(\AppBundle\Entity\Tournament  <span class="argument">$tournament = null</span>) : \AppBundle\Entity\Match</pre>
+                <p><em>Set tournament</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/AppBundle.Entity.Tournament.html">\AppBundle\Entity\Tournament</a></td>
+                                <td>$tournament </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTournament" name="method_getTournament" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTournament()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTournament() : \AppBundle\Entity\Tournament</pre>
+                <p><em>Get tournament</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Tournament.html">\AppBundle\Entity\Tournament</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setTeam1" name="method_setTeam1" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setTeam1()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setTeam1(\AppBundle\Entity\Team  <span class="argument">$team1 = null</span>) : \AppBundle\Entity\Match</pre>
+                <p><em>Set team1</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/AppBundle.Entity.Team.html">\AppBundle\Entity\Team</a></td>
+                                <td>$team1 </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTeam1" name="method_getTeam1" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTeam1()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTeam1() : \AppBundle\Entity\Team</pre>
+                <p><em>Get team1</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Team.html">\AppBundle\Entity\Team</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setTeam2" name="method_setTeam2" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setTeam2()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setTeam2(\AppBundle\Entity\Team  <span class="argument">$team2 = null</span>) : \AppBundle\Entity\Match</pre>
+                <p><em>Set team2</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/AppBundle.Entity.Team.html">\AppBundle\Entity\Team</a></td>
+                                <td>$team2 </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getTeam2" name="method_getTeam2" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getTeam2()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getTeam2() : \AppBundle\Entity\Team</pre>
+                <p><em>Get team2</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Team.html">\AppBundle\Entity\Team</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setStatus" name="method_setStatus" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setStatus()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setStatus(\AppBundle\Entity\MatchStatus  <span class="argument">$status = null</span>) : \AppBundle\Entity\Match</pre>
+                <p><em>Set status</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/AppBundle.Entity.MatchStatus.html">\AppBundle\Entity\MatchStatus</a></td>
+                                <td>$status </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getStatus" name="method_getStatus" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getStatus()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getStatus() : \AppBundle\Entity\MatchStatus</pre>
+                <p><em>Get status</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.MatchStatus.html">\AppBundle\Entity\MatchStatus</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setReferee" name="method_setReferee" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setReferee()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setReferee(\AppBundle\Entity\User  <span class="argument">$referee = null</span>) : \AppBundle\Entity\Match</pre>
+                <p><em>Set referee</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td><a href="../classes/AppBundle.Entity.User.html">\AppBundle\Entity\User</a></td>
+                                <td>$referee </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getReferee" name="method_getReferee" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getReferee()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getReferee() : \AppBundle\Entity\User</pre>
+                <p><em>Get referee</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.User.html">\AppBundle\Entity\User</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_restSerialize" name="method_restSerialize" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">restSerialize()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">restSerialize() : array</pre>
+                <p><em>Serialize object for rest api</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    array
+                                            &mdash; <p>of data for json serializing</p>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_setCoreGroup" name="method_setCoreGroup" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">setCoreGroup()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">setCoreGroup(boolean  <span class="argument">$coreGroup</span>) : \AppBundle\Entity\Match</pre>
+                <p><em>Set coreGroup</em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>boolean</td>
+                                <td>$coreGroup </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                                    <h4>Returns</h4>
+                    <a href="../classes/AppBundle.Entity.Match.html">\AppBundle\Entity\Match</a>
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getCoreGroup" name="method_getCoreGroup" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getCoreGroup()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getCoreGroup() : boolean</pre>
+                <p><em>Get coreGroup</em></p>
+                
+
+                
+                
+                                    <h4>Returns</h4>
+                    boolean
+                                    				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">Match.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/AppBundle\Entity\Match.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/AppBundle.html">\AppBundle</a></li>
+                                                                            <li><a href="../namespaces/RestBundle.html">\RestBundle</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on March 22nd, 2017 at 21:18.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

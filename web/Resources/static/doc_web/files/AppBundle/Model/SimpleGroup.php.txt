@@ -1,0 +1,117 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Martin Forejt, forejt.martin97@gmail.com
+ * Date: 27.01.2017
+ * Time: 18:29
+ */
+
+namespace AppBundle\Model;
+
+use RestBundle\Model\RestSerializable;
+
+/**
+ * Class SimpleGroup
+ * @package AppBundle\Model
+ */
+class SimpleGroup implements RestSerializable{
+    /**
+     * Name
+     * @var string
+     */
+    protected $name;
+    /**
+     * Group
+     * @var int
+     */
+    protected $group;
+    /**
+     * Core group
+     * @var bool
+     */
+    private $core;
+
+    /**
+     * Def construct
+     * @param int $group
+     * @param string $name
+     */
+    public function __construct($group, $name){
+        $this->group = $group;
+        $this->name = $name;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Get group
+     *
+     * @return int
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+    /**
+     * Set group
+     *
+     * @param int $group
+     */
+    public function setGroup($group)
+    {
+        $this->group = $group;
+    }
+
+    /**
+     * Get core
+     *
+     * @return bool
+     */
+    public function getCore()
+    {
+        return $this->core;
+    }
+
+    /**
+     * Set core
+     *
+     * @param bool $core
+     */
+    public function setCore($core)
+    {
+        $this->core = $core;
+    }
+
+    /**
+     * Serialize object for rest api
+     * @return array of data for json serializing
+     */
+    public function restSerialize()
+    {
+        return array(
+            'group' => $this->group,
+            'name' => $this->name
+        );
+    }
+
+
+}

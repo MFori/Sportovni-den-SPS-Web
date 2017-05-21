@@ -1,0 +1,263 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Martin Forejt, forejt.martin97@gmail.com
+ * Date: 21.12.2016
+ * Time: 18:10
+ */
+
+namespace AppBundle\Model;
+
+use AppBundle\Entity\MatchStatus;
+use AppBundle\Entity\ScoringType;
+use AppBundle\Entity\Sport;
+use AppBundle\Entity\Team;
+use AppBundle\Entity\Tournament;
+use AppBundle\Form\Tournament as Data;
+
+/**
+ * Class TournamentBuilder
+ * @package AppBundle\Model
+ */
+class TournamentBuilder
+{
+    /**
+     * Data
+     * @var Tournament
+     */
+    private $data;
+    /**
+     * Tournament
+     * @var \AppBundle\Entity\Tournament
+     */
+    private $tournament;
+    /**
+     * Teams
+     * @var array
+     */
+    private $teams;
+    /**
+     * Sporst
+     * @var array
+     */
+    private $sports;
+    /**
+     * sportEntities
+     * @var array
+     */
+    private $sportEntities;
+    /**
+     * Scoring
+     * @var array
+     */
+    private $scoring;
+    /**
+     * Matches
+     * @var array
+     */
+    private $matches = array();
+    /**
+     * Performances
+     * @var array
+     */
+    private $performances;
+    /**
+     * ScoringTypes
+     * @var array
+     */
+    private $scoringTypes;
+    /**
+     * Matches status
+     * @var MatchStatus
+     */
+    private $matchStatus;
+
+    /**
+     * Defautl construct
+     * @param Data $formData
+     * @param Tournament $tournament
+     * @param $sports
+     * @param $statuses
+     */
+    public function __construct(Data $formData, Tournament $tournament, $sports, $statuses)
+    {
+        $this->data = $formData;
+        $this->tournament = $tournament;
+
+        if(!is_int($tournament->getId())) throw new \BadMethodCallException('Save tournament at first.');
+
+        /* @var $sport Sport */
+        foreach($sports as $sport) {
+            $this->sportEntities[$sport->getId()] = $sport;
+        }
+
+        /* @var $status MatchStatus */
+        foreach($statuses as $status) {
+            if($status->hasStatus(STATUS_CREATED)){
+                $this->matchStatus = $status;
+                break;
+            }
+        }
+    }
+
+    /**
+     * Create tournament
+     * @return bool
+     */
+    public function create()
+    {
+        $this->updateTeams();
+        $this->mineSports();
+        $this->createScoring();
+        $this->createMatches();
+
+        return true;
+    }
+
+    /**
+     * Update teams
+     */
+    private function updateTeams()
+    {
+        $this->teams = $this->data->getTeams();
+    }
+
+    /**
+     * Mine sports
+     */
+    private function mineSports()
+    {
+        $this->sports = array();
+
+        $sports = $this->data->getSports();
+        /* @var $sport \AppBundle\Form\Sport */
+        foreach ($sports as $sport) {
+            $this->sports[$sport->getId()] = $sport;
+        }
+
+        /* @var $sport Sport */
+        foreach ($this->sportEntities as $sport) {
+            /* @var $data \AppBundle\Form\Sport */
+            $data = $this->sports[$sport->getId()];
+
+            $sport->setActive($data->getActive());
+        }
+    }
+
+    /**
+     * Create matches
+     */
+    private function createMatches()
+    {
+        /* @var $sport \AppBundle\Form\Sport */
+        foreach ($this->sports as $sport) {
+            if (!$sport->getActive()) continue;
+            $generator = MatchesGenerator::CreateGenerator($sport->getScoringType());
+            if ($generator == null) continue;
+
+            $generator->setTournament($this->tournament);
+            $generator->setSport($this->sportEntities[$sport->getId()]);
+            $generator->setDefaultStatus($this->matchStatus);
+
+            /* @var $team Team */
+            foreach ($this->teams as $team) {
+                if ($team->getActive())
+                    $generator->addTeam($team);
+            }
+
+            $this->matches[$sport->getId()] = $generator->generate();
+        }
+    }
+
+    /**
+     * create scoring
+     */
+    private function createScoring()
+    {
+        /* @var $sport \AppBundle\Form\Sport */
+        foreach ($this->sports as $sport) {
+            if (!$sport->getActive()) continue;
+            $scoring = $sport->createScoring();
+            $scoring->setTournamentId($this->tournament->getId());
+            $scoring->setTournament($this->tournament);
+            $scoring->setSport($this->sportEntities[$sport->getId()]);
+            $scoring->setType($this->scoringTypes[$scoring->getTypeId()]);
+
+            $this->scoring[$sport->getId()] = $scoring;
+        }
+    }
+
+    /**
+     * Get sports
+     *
+     * @return mixed
+     */
+    public function getSports()
+    {
+        return $this->sportEntities;
+    }
+
+    /**
+     * Get tournament
+     *
+     * @return \AppBundle\Entity\Tournament
+     */
+    public function getTournament()
+    {
+        return $this->tournament;
+    }
+
+    /**
+     * Get teams
+     *
+     * @return array
+     */
+    public function getTeams()
+    {
+        return $this->teams;
+    }
+
+    /**
+     * Get scoring
+     *
+     * @return array
+     */
+    public function getScoring()
+    {
+        return $this->scoring;
+    }
+
+    /**
+     * Get matches
+     *
+     * @return array
+     */
+    public function getMatches()
+    {
+        return $this->matches;
+    }
+
+    /**
+     * Get performances
+     *
+     * @return array
+     */
+    public function getPerformances()
+    {
+        return $this->performances;
+    }
+
+    /**
+     * Get scoring types
+     *
+     * @param array $scoringTypes
+     */
+    public function setScoringTypes($scoringTypes)
+    {
+        /* @var $type ScoringType */
+        foreach($scoringTypes as $type)
+        {
+            $this->scoringTypes[$type->getId()] = $type;
+        }
+    }
+}
